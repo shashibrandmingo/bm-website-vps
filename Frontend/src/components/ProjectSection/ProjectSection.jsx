@@ -54,7 +54,7 @@ const ProjectSection = () => {
               </div>
 
               {/* ── View All → /portfolio ── */}
-              <div className="col-xl-3 col-lg-4" data-aos="fade-up">
+              <div className="col-xl-3 col-lg-4">
                 <div className="project-btn text-center text-lg-end">
                   <Link to="/portfolio" className="btn-style-one">
                     <span className="btn-arrow-left">

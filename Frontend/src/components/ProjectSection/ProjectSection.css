@@ -55,3 +55,26 @@
     font-weight: 400 !important;
   }
 }
+
+/* ── Project Button Clickability & Spacing ── */
+.project-btn {
+  position: relative;
+  z-index: 10;
+}
+
+.project-btn .btn-style-one {
+  position: relative;
+  z-index: 10;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+}
+
+@media (max-width: 991px) {
+  .project-btn {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 20;
+  }
+}
+
