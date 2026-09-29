@@ -77,12 +77,13 @@ const ProjectSection = () => {
             <div
               key={index}
               className="col-xl-4 col-lg-6 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay={300 + index * 200}
             >
               <div
                 className="project-block"
                 onClick={() => openPopup(item)}
+                onKeyDown={(e) => e.key === "Enter" && openPopup(item)}
+                role="button"
+                tabIndex={0}
                 style={{ cursor: "pointer" }}
               >
                 <div className="inner-block">
@@ -94,6 +95,7 @@ const ProjectSection = () => {
                       className="arrow-icon"
                       onClick={(e) => {
                         e.preventDefault();
+                        e.stopPropagation();
                         openPopup(item);
                       }}
                     >
@@ -106,6 +108,7 @@ const ProjectSection = () => {
                         href="#"
                         onClick={(e) => {
                           e.preventDefault();
+                          e.stopPropagation();
                           openPopup(item);
                         }}
                       >

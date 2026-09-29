@@ -78,3 +78,29 @@
   }
 }
 
+/* ── Project Cards Mobile Tap Reliability ── */
+.project-block {
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+  position: relative;
+  z-index: 2;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.project-block .inner-block,
+.project-block .image-block,
+.project-block .content-block,
+.project-block .title,
+.project-block .title a,
+.project-block .hover-img {
+  cursor: pointer !important;
+}
+
+/* Prevent phantom blur 0-opacity overlay image from intercepting mobile taps */
+.project-block .inner-block .image-block .hover-img:first-child {
+  pointer-events: none !important;
+}
+
+
