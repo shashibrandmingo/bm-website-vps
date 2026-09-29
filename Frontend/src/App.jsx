@@ -198,26 +198,41 @@ function App() {
   };
 
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-      easing: "ease-in-out",
-      disable: window.innerWidth < 768,
-    });
+    try {
+      AOS.init({
+        duration: 800,
+        once: true,
+        easing: "ease-in-out",
+        disable: window.innerWidth < 768,
+      });
+    } catch (e) {
+      console.warn("AOS init error:", e);
+    }
 
-    const hasLoaded = sessionStorage.getItem("hasLoaded");
+    let hasLoaded = false;
+    try {
+      hasLoaded = sessionStorage.getItem("hasLoaded");
+    } catch (e) {
+      // Safari private browsing blocks sessionStorage
+      hasLoaded = true;
+    }
+
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    if (isMobile) {
+      // Mobile devices (especially iPhone) skip artificial loader for instant paint
+      setShowLoader(false);
+      return;
+    }
 
     if (!hasLoaded) {
       setShowLoader(true);
 
-      // Fixed timeout — does NOT wait for window.load event.
-      // On iPhone, window.load can hang indefinitely if a 3rd-party resource
-      // (Google Fonts, reCAPTCHA, CDN script) stalls, keeping the preloader
-      // on screen forever. A hard 2.5s cap guarantees the UI always appears.
       const timer = setTimeout(() => {
         setShowLoader(false);
-        sessionStorage.setItem("hasLoaded", "true");
-      }, 2500);
+        try {
+          sessionStorage.setItem("hasLoaded", "true");
+        } catch (e) {}
+      }, 800);
 
       return () => clearTimeout(timer);
     }

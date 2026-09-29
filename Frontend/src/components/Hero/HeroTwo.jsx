@@ -253,12 +253,16 @@ const HeroTwo = ({ openPopup }) => {
   const orbRightX = useTransform(springX, [-0.5, 0.5], [18, -18]);
   const orbRightY = useTransform(springY, [-0.5, 0.5], [12, -12]);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const isMobileOrIOS =
       "ontouchstart" in window ||
       navigator.maxTouchPoints > 0 ||
       /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
       window.innerWidth < 992;
+
+    setIsMobile(Boolean(isMobileOrIOS));
 
     if (isMobileOrIOS) return;
 
@@ -329,16 +333,19 @@ const HeroTwo = ({ openPopup }) => {
                   ease: "easeInOut",
                 }}
               >
-                {/* Lottie is lazy-loaded and skipped on mobile to prevent:
-                    1. The duplicate lottie.host network request visible in Safari Inspector
-                    2. Infinite Framer animation GPU pressure on iPhone first paint */}
-                <Suspense fallback={<div style={{ width: 120, height: 120 }} />}>
-                  <DotLottieReact
-                    src="https://lottie.host/11c4931e-f8e2-4064-8263-64b3011a5a01/aZtSibBLe6.lottie"
-                    loop
-                    autoplay
-                  />
-                </Suspense>
+                {!isMobile ? (
+                  <Suspense fallback={<div style={{ width: 120, height: 120 }} />}>
+                    <DotLottieReact
+                      src="https://lottie.host/11c4931e-f8e2-4064-8263-64b3011a5a01/aZtSibBLe6.lottie"
+                      loop
+                      autoplay
+                    />
+                  </Suspense>
+                ) : (
+                  <span style={{ fontSize: "1.8rem", display: "inline-block", padding: "0 6px" }}>
+                    🚀
+                  </span>
+                )}
               </motion.div>
               <span className="hn-line3-text">
                 for Your <em className="hn-accent">Business</em>

@@ -4,37 +4,36 @@ const Preloader = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Page load ke baad hide
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const duration = isMobile ? 800 : 1500;
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // timing change kar sakte ho
+    }, duration);
 
     return () => clearTimeout(timer);
   }, []);
 
-  return (
-    <>
-      {loading && (
-        <div className="preloader is-loading">
-          <div className="preloader-inner">
-            <div className="preloader-ball-wrap">
-              <div className="preloader-ball-inner-wrap">
-                <div className="preloader-ball-inner">
-                  <div className="preloader-ball"></div>
-                </div>
-                <div className="preloader-ball-shadow"></div>
-              </div>
+  if (!loading) return null;
 
-              <div id="weave-anim" className="preloader-text">
-                Loading...
-              </div>
+  return (
+    <div className="preloader is-loading" style={{ pointerEvents: loading ? "auto" : "none" }}>
+      <div className="preloader-inner">
+        <div className="preloader-ball-wrap">
+          <div className="preloader-ball-inner-wrap">
+            <div className="preloader-ball-inner">
+              <div className="preloader-ball"></div>
             </div>
+            <div className="preloader-ball-shadow"></div>
           </div>
 
-          <div className="preloader-overlay"></div>
+          <div id="weave-anim" className="preloader-text">
+            Loading...
+          </div>
         </div>
-      )}
-    </>
+      </div>
+
+      <div className="preloader-overlay"></div>
+    </div>
   );
 };
 

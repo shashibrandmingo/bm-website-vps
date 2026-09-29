@@ -53,12 +53,12 @@ body {
   @media (max-width: 768px) {
     .hn-bg-orb,
     .cf-bg-orb,
-    .cf-bg-deco {
+    .cf-bg-deco,
+    .glow-1,
+    .glow-2,
+    .glow-3,
+    .glow-cursor {
       display: none !important;
-    }
-    
-    * {
-      -webkit-transform-style: flat !important;
     }
   }
 }

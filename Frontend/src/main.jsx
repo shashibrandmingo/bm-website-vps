@@ -13,13 +13,17 @@ import "./index.css";
 import App from "./App.jsx";
 
 // Init AOS once before render
-AOS.init({
-  duration: 800,
-  once: true, // animate only on first scroll — no repeat
-  mirror: false,
-  disable: false,
-  offset: 60, // trigger slightly before element enters viewport
-});
+try {
+  AOS.init({
+    duration: 800,
+    once: true, // animate only on first scroll — no repeat
+    mirror: false,
+    disable: typeof window !== "undefined" && window.innerWidth < 768,
+    offset: 60, // trigger slightly before element enters viewport
+  });
+} catch (e) {
+  console.warn("AOS init error:", e);
+}
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
