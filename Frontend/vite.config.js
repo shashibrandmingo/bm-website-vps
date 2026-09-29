@@ -52,6 +52,13 @@ export default defineConfig({
     allowedHosts: ["brandmingo.in", "www.brandmingo.in", "localhost"],
   },
   build: {
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     cssTarget: "safari12",
     rollupOptions: {
       output: {

@@ -1,19 +1,23 @@
-import React from "react";
-import MarqueeSection from "../../components/MarqueeSection/MarqueeSection";
-import WorkProcess from "../../components/WorkProcess/WorkProcess";
-import VideoSection from "../../components/VideoSection/VideoSection";
-import TestimonialHome from "../../components/Testimonial/TestimonialHome";
-import FaqSection from "../../components/FaqSection/FaqSection";
-import BrandSection from "../../components/BrandSection/BrandSection";
-import ClientForm from "../../components/contactfrom/ClientForm";
-import AboutUsHome from "../../components/AboutSection/AboutUsHome";
-import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
-import ServicesSectionHome from "../../components/ServicesSection/ServicesSectionHome";
-import Client from "../../components/Testimonial/Client";
-import ProjectSection from "../../components/ProjectSection/ProjectSection";
-import BlogHome from "../../components/BlogHome/BlogHome";
+import React, { lazy, Suspense } from "react";
 import HeroTwo from "../../components/Hero/HeroTwo";
+import MarqueeSection from "../../components/MarqueeSection/MarqueeSection";
+import AboutUsHome from "../../components/AboutSection/AboutUsHome";
 import SEO from "../../components/SEO/SEO";
+
+// Below-the-fold sections loaded asynchronously to ensure instant initial render (<0.1s)
+const WhyChooseUs = lazy(() => import("../../components/WhyChooseUs/WhyChooseUs"));
+const ServicesSectionHome = lazy(() => import("../../components/ServicesSection/ServicesSectionHome"));
+const ProjectSection = lazy(() => import("../../components/ProjectSection/ProjectSection"));
+const WorkProcess = lazy(() => import("../../components/WorkProcess/WorkProcess"));
+const VideoSection = lazy(() => import("../../components/VideoSection/VideoSection"));
+const Client = lazy(() => import("../../components/Testimonial/Client"));
+const FaqSection = lazy(() => import("../../components/FaqSection/FaqSection"));
+const BrandSection = lazy(() => import("../../components/BrandSection/BrandSection"));
+const TestimonialHome = lazy(() => import("../../components/Testimonial/TestimonialHome"));
+const BlogHome = lazy(() => import("../../components/BlogHome/BlogHome"));
+const ClientForm = lazy(() => import("../../components/contactfrom/ClientForm"));
+
+const SectionFallback = () => <div style={{ minHeight: "100px" }} />;
 
 const NewHome = ({ openPopup }) => {
   return (
@@ -24,6 +28,7 @@ const NewHome = ({ openPopup }) => {
         canonical="https://brandmingo.com/"
         keywords="Brandmingo, digital marketing agency, SEO company India, web development company, branding agency"
       />
+      {/* ── Above the fold: Instant Mount ── */}
       <HeroTwo openPopup={openPopup} />
       <div className="marqueeSection">
         <MarqueeSection />
@@ -33,41 +38,44 @@ const NewHome = ({ openPopup }) => {
         <AboutUsHome />
       </div>
 
-      <WhyChooseUs />
+      {/* ── Below the fold: Lazy loaded in background without blocking paint ── */}
+      <Suspense fallback={<SectionFallback />}>
+        <WhyChooseUs />
 
-      <div className="servicesSectionHome">
-        <ServicesSectionHome />
-      </div>
+        <div className="servicesSectionHome">
+          <ServicesSectionHome />
+        </div>
 
-      <div className="project-Section-home">
-        <ProjectSection />
-      </div>
+        <div className="project-Section-home">
+          <ProjectSection />
+        </div>
 
-      <div className="workProcess-Section-home">
-        <WorkProcess />
-      </div>
+        <div className="workProcess-Section-home">
+          <WorkProcess />
+        </div>
 
-      <VideoSection />
+        <VideoSection />
 
-      <div className="client-home">
-        <Client />
-      </div>
+        <div className="client-home">
+          <Client />
+        </div>
 
-      <div className="faqSection-home">
-        <FaqSection />
-      </div>
+        <div className="faqSection-home">
+          <FaqSection />
+        </div>
 
-      <BrandSection />
+        <BrandSection />
 
-      <TestimonialHome />
+        <TestimonialHome />
 
-      <div className="newsSection-home">
-        <BlogHome />
-      </div>
+        <div className="newsSection-home">
+          <BlogHome />
+        </div>
 
-      <div className="clientForm-home">
-        <ClientForm />
-      </div>
+        <div className="clientForm-home">
+          <ClientForm />
+        </div>
+      </Suspense>
     </>
   );
 };

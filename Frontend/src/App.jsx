@@ -18,7 +18,6 @@ import "./assets/css/responsive.css";
 import "aos/dist/aos.css";
 
 // COMPONENTS
-import Preloader from "./components/Preloader/Preloader";
 import Navbar from "./components/Navbar/Navbar";
 
 // admin
@@ -54,7 +53,7 @@ const EditBlog = lazy(() => import("./admin/EditBlog/EditBlog"));
 const Login = lazy(() => import("./admin/LoginAdmin/Login"));
 
 // WEBSITE PAGES
-const NewHome = lazy(() => import("./pages/Home/NewHome"));
+import NewHome from "./pages/Home/NewHome";
 const BlogDetails = lazy(() => import("./pages/Blogs/BlogDetails/BlogDetails"));
 
 const About = lazy(() => import("./pages/About/About"));
@@ -176,8 +175,6 @@ function ScrollToTop() {
 }
 
 function App() {
-  const [showLoader, setShowLoader] = useState(false);
-
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isCareersOpen, setIsCareersOpen] = useState(false);
 
@@ -208,40 +205,11 @@ function App() {
     } catch (e) {
       console.warn("AOS init error:", e);
     }
-
-    let hasLoaded = false;
-    try {
-      hasLoaded = sessionStorage.getItem("hasLoaded");
-    } catch (e) {
-      // Safari private browsing blocks sessionStorage
-      hasLoaded = true;
-    }
-
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-    if (isMobile) {
-      // Mobile devices (especially iPhone) skip artificial loader for instant paint
-      setShowLoader(false);
-      return;
-    }
-
-    if (!hasLoaded) {
-      setShowLoader(true);
-
-      const timer = setTimeout(() => {
-        setShowLoader(false);
-        try {
-          sessionStorage.setItem("hasLoaded", "true");
-        } catch (e) {}
-      }, 800);
-
-      return () => clearTimeout(timer);
-    }
   }, []);
 
   return (
     <BrowserRouter>
       <AppContent
-        showLoader={showLoader}
         isPopupOpen={isPopupOpen}
         openPopup={openPopup}
         closePopup={closePopup}
@@ -253,7 +221,7 @@ function App() {
   );
 }
 
-function AppContent({ showLoader, isPopupOpen, openPopup, closePopup, isCareersOpen, openCareers, closeCareers }) {
+function AppContent({ isPopupOpen, openPopup, closePopup, isCareersOpen, openCareers, closeCareers }) {
   const location = useLocation();
 
   useEffect(() => {
@@ -279,10 +247,6 @@ function AppContent({ showLoader, isPopupOpen, openPopup, closePopup, isCareersO
   return (
     <>
       <ScrollToTop />
-
-      {/* LOADER */}
-      {/* {showLoader && <Preloader />}/ */}
-      {showLoader && !isAdminRoute && <Preloader />}
 
       {/* NAVBAR */}
       {!isAdminRoute && <Navbar openPopup={openPopup} />}
