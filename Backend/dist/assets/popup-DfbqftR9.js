@@ -1,0 +1,1 @@
+var e=()=>{window.dispatchEvent(new Event(`open-enquiry-popup`))},t=()=>{window.dispatchEvent(new Event(`open-careers-popup`))};export{e as n,t};

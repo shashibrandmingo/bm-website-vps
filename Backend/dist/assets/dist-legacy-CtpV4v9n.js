@@ -1,0 +1,1 @@
+System.register(["./vendor-legacy-BAdImgQR.js"],function(t,e){var n;return{setters:[function(t){n=t.bt}],execute:function(){t("DotLottieReact",n)}}});

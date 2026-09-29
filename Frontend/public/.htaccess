@@ -1,0 +1,8 @@
+Options -MultiViews
+RewriteEngine On
+RewriteBase /
+
+# Rewrite all non-file/directory requests to index.html for SPA Client-Side Routing
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]
