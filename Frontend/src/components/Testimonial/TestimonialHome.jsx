@@ -121,19 +121,15 @@ const TestimonialCard = ({ name, service, review }) => (
    INFINITE SCROLL TRACK
 ══════════════════════════════════════════ */
 const InfiniteTrack = ({ items, direction = "left", speed = 40 }) => {
-  const [isPaused, setIsPaused] = useState(false);
   const doubled = [...items, ...items];
+  const trackClass =
+    direction === "right"
+      ? "th-track th-track--right"
+      : "th-track th-track--left";
 
   return (
-    <div
-      className="th-track-wrap"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <div
-        className={`th-track th-track--${direction}${isPaused ? " th-track--paused" : ""}`}
-        style={{ "--speed": `${speed}s` }}
-      >
+    <div className="th-track-wrap">
+      <div className={trackClass} style={{ "--speed": `${speed}s` }}>
         {doubled.map((item, i) => (
           <TestimonialCard key={i} {...item} />
         ))}

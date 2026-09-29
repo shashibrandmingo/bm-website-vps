@@ -14,6 +14,7 @@ export default defineConfig({
     }),
     purgecss({
       content: ["./src/**/*.jsx", "./src/**/*.js", "./index.html"],
+      keyframes: false,
       safelist: {
         standard: [
           /^aos-/,
@@ -27,12 +28,22 @@ export default defineConfig({
           /^nav-/,
           /^dropdown-/,
           /^swiper/,
-          /^btn-/
+          /^btn-/,
+          /^th-/,
+          /^hn-/,
+          /^au-/,
+          /^pfc-/,
+          /^ppop-/,
+          /^bm-/,
+          "th-track--left",
+          "th-track--right"
         ],
         deep: [
           /blog/,
           /content/,
-          /rich-text/
+          /rich-text/,
+          /th-/,
+          /track/
         ]
       }
     }),

@@ -245,14 +245,19 @@
 
 .th-track--left {
   animation: th-scroll-left var(--speed, 40s) linear infinite;
+  will-change: transform;
 }
 
 .th-track--right {
   animation: th-scroll-right var(--speed, 42s) linear infinite;
+  will-change: transform;
 }
 
-.th-track--paused {
-  animation-play-state: paused;
+/* Pause on hover only on devices with a mouse, never stuck on touch screens */
+@media (hover: hover) {
+  .th-track-wrap:hover .th-track {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes th-scroll-left {
