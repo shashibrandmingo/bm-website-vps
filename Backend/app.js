@@ -37,7 +37,11 @@ app.use((req, res, next) => {
 // ================= CORS =================
 // In production, allow both apex domain and www subdomain
 const rawOrigins = [
-  process.env.CLIENT_URL,          // e.g. https://brandmingo.com
+  process.env.CLIENT_URL,          // e.g. https://brandmingo.in
+  "https://brandmingo.in",
+  "https://www.brandmingo.in",
+  "http://brandmingo.in",
+  "http://www.brandmingo.in",
   "https://brandmingo.com",
   "https://www.brandmingo.com",
   "http://brandmingo.com",
