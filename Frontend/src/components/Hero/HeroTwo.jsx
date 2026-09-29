@@ -333,19 +333,13 @@ const HeroTwo = ({ openPopup }) => {
                   ease: "easeInOut",
                 }}
               >
-                {!isMobile ? (
-                  <Suspense fallback={<div style={{ width: 120, height: 120 }} />}>
-                    <DotLottieReact
-                      src="https://lottie.host/11c4931e-f8e2-4064-8263-64b3011a5a01/aZtSibBLe6.lottie"
-                      loop
-                      autoplay
-                    />
-                  </Suspense>
-                ) : (
-                  <span style={{ fontSize: "1.8rem", display: "inline-block", padding: "0 6px" }}>
-                    🚀
-                  </span>
-                )}
+                <Suspense fallback={<div className="hn-lottie-fallback" />}>
+                  <DotLottieReact
+                    src="https://lottie.host/11c4931e-f8e2-4064-8263-64b3011a5a01/aZtSibBLe6.lottie"
+                    loop
+                    autoplay
+                  />
+                </Suspense>
               </motion.div>
               <span className="hn-line3-text">
                 for Your <em className="hn-accent">Business</em>

@@ -397,6 +397,20 @@
   top: 0;
 }
 
+.hn-lottie-fallback {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 107, 30, 0.2);
+  border-top-color: #ff6b1e;
+  animation: hn-spin 0.8s linear infinite;
+}
+@keyframes hn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .hn-cursor-badge {
   display: inline-flex;
   align-items: center;
