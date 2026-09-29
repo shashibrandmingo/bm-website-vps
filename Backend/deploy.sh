@@ -53,7 +53,7 @@ pm2 save
 
 echo "🧪 [5/5] Checking server health..."
 sleep 2
-curl -s http://127.0.0.1:5000/health || echo "⚠️ Could not connect to /health endpoint yet"
+curl -s http://127.0.0.1:5006/health || echo "⚠️ Could not connect to /health endpoint yet"
 
 echo ""
 echo "✅ Deployment completed successfully!"
