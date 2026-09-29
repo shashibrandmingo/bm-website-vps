@@ -46,6 +46,11 @@ export default defineConfig({
       },
     },
   },
+  preview: {
+    port: 3006,
+    host: true,
+    allowedHosts: ["brandmingo.in", "www.brandmingo.in", "localhost"],
+  },
   build: {
     cssTarget: "safari12",
     rollupOptions: {
