@@ -281,7 +281,7 @@ const ServicesSectionHome = () => {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
         >
-          <Link to="/contact-us" className="btn-style-one" data-aos="fade-up">
+          <Link to="/contact-us" className="btn-style-one">
             <span className="btn-arrow-left">
               <img src={arrow} alt="" />
             </span>

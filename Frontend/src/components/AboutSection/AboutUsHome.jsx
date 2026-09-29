@@ -246,7 +246,7 @@ export default function AboutUsHome() {
               ))}
             </div>
             {/* CTA */}
-            <Link to="/about-us" className="btn-style-one" data-aos="fade-up">
+            <Link to="/about-us" className="btn-style-one">
               {" "}
               <span className="btn-arrow-left">
                 <img src={arrow} alt="" />

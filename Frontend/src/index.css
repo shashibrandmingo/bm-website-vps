@@ -63,6 +63,18 @@ body {
   }
 }
 
+/* ── Mobile Button Touch Reliability ── */
+/* Prevents child spans/icons from capturing touches and ensures 100% reliable tap on iOS & Android */
+.btn-style-one {
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.btn-style-one * {
+  pointer-events: none !important;
+}
+
 
 
 

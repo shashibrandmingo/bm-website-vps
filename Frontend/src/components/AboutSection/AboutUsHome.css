@@ -274,6 +274,8 @@
   flex-direction: column;
   gap: 28px;
   padding-top: 8px;
+  position: relative;
+  z-index: 5;
 }
 
 .au-intro-block {
@@ -328,6 +330,11 @@
   display: inline-flex;
   width: auto;
   align-self: flex-start;
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ── Skills / Progress bars ─────── */
@@ -578,7 +585,7 @@
 
   .au-grid {
     gap: 48px;
-    margin-bottom: -25px;
+    margin-bottom: 24px;
   }
 
   .au-heading {
@@ -678,15 +685,29 @@
     font-size: 26px;
   }
 }
-/* responshive */
-@media (max-width: 560px) {
+/* responsive */
+@media (max-width: 991px) {
   .au-right .btn-style-one {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     position: relative;
-    z-index: 2;
+    z-index: 20;
   }
 
   .au-stats-bar {
-    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .au-right .btn-style-one {
+    margin-bottom: 36px;
+    position: relative;
+    z-index: 20;
+  }
+
+  .au-stats-bar {
+    margin-top: 10px;
   }
 }

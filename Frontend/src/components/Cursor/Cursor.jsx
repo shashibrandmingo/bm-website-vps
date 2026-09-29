@@ -79,6 +79,16 @@ const Cursor = () => {
     };
   }, []);
 
+  const isTouchOrMobile =
+    typeof window !== "undefined" &&
+    ("ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.innerWidth < 992);
+
+  if (isTouchOrMobile) {
+    return null;
+  }
+
   return (
     <>
       <div className="mouseCursor cursor-outer"></div>
