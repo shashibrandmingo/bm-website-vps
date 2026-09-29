@@ -74,8 +74,13 @@ body {
 .btn-style-one * {
   pointer-events: none !important;
 }
-
-
-
+/* ── Global Interactive Elements Mobile Touch Support ── */
+.project-block,
+.working-block-one,
+.faq-block-one .title-box {
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
 
 

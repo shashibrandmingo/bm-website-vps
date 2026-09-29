@@ -55,3 +55,23 @@ h2.work-process-heading {
     font-weight: 400 !important;
   }
 }
+
+/* ── Working Block Mobile Tap Reliability ── */
+.working-block-one {
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  z-index: 2;
+}
+
+.working-block-one .inner-block,
+.working-block-one .step,
+.working-block-one .content-box,
+.working-block-one .title,
+.working-block-one .text {
+  cursor: pointer !important;
+}
+

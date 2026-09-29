@@ -66,9 +66,11 @@ const WorkProcess = () => {
               <div
                 key={index}
                 className="working-block-one"
-                data-aos="fade-up"
-                data-aos-delay={index * 200}
                 onClick={() => setActiveStep(index)}
+                onKeyDown={(e) => e.key === "Enter" && setActiveStep(index)}
+                role="button"
+                tabIndex={0}
+                style={{ cursor: "pointer" }}
               >
                 <div
                   className={`inner-block ${
