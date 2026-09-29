@@ -51,19 +51,19 @@ export default defineConfig({
     host: true,
     allowedHosts: ["brandmingo.in", "www.brandmingo.in", "localhost"],
   },
+  esbuild: {
+    drop: ["console", "debugger"],
+  },
   build: {
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    chunkSizeWarningLimit: 1000,
     cssTarget: "safari12",
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
+            if (id.includes("@tiptap")) {
+              return "admin-editor";
+            }
             if (
               id.includes("react") ||
               id.includes("react-dom") ||
@@ -77,6 +77,9 @@ export default defineConfig({
               id.includes("aos")
             ) {
               return "animations";
+            }
+            if (id.includes("@fortawesome") || id.includes("react-icons")) {
+              return "icons";
             }
           }
         },
