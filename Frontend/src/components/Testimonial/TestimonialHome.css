@@ -241,14 +241,22 @@
   align-items: stretch;
   gap: 18px;
   width: max-content;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .th-track--left {
+  -webkit-animation: th-scroll-left var(--speed, 40s) linear infinite;
   animation: th-scroll-left var(--speed, 40s) linear infinite;
   will-change: transform;
 }
 
 .th-track--right {
+  -webkit-animation: th-scroll-right var(--speed, 42s) linear infinite;
   animation: th-scroll-right var(--speed, 42s) linear infinite;
   will-change: transform;
 }
@@ -256,25 +264,52 @@
 /* Pause on hover only on devices with a mouse, never stuck on touch screens */
 @media (hover: hover) {
   .th-track-wrap:hover .th-track {
+    -webkit-animation-play-state: paused;
     animation-play-state: paused;
+  }
+}
+
+@-webkit-keyframes th-scroll-left {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @keyframes th-scroll-left {
   0% {
-    transform: translateX(0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@-webkit-keyframes th-scroll-right {
+  0% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes th-scroll-right {
   0% {
-    transform: translateX(-50%);
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
   100% {
-    transform: translateX(0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
