@@ -60,7 +60,7 @@ export default defineConfig({
   preview: {
     port: 3006,
     host: true,
-    allowedHosts: ["brandmingo.in", "www.brandmingo.in", "localhost"],
+    allowedHosts: ["brandmingo.com", "www.brandmingo.com", "brandmingo.in", "www.brandmingo.in", "localhost"],
   },
   esbuild: {
     drop: ["console", "debugger"],

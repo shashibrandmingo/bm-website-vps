@@ -19,6 +19,7 @@ import "aos/dist/aos.css";
 
 // COMPONENTS
 import Navbar from "./components/Navbar/Navbar";
+import SEOManager from "./components/SEO/SEOManager";
 
 // admin
 import ProtectedRoute from "./admin/ProtectedRoute.jsx";
@@ -246,6 +247,7 @@ function AppContent({ isPopupOpen, openPopup, closePopup, isCareersOpen, openCar
 
   return (
     <>
+      <SEOManager />
       <ScrollToTop />
 
       {/* NAVBAR */}

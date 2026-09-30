@@ -20,23 +20,23 @@ const MotionLink = motion(Link);
 const CLIENT_LOGOS = [
   {
     url: "/Cloudinary-images/9_lrlxdl.png",
-    alt: "Client 1",
+    alt: "Brandmingo Web Development Client Partner",
   },
   {
     url: "/Cloudinary-images/19_kxrlwu.png",
-    alt: "Client 2",
+    alt: "Brandmingo Digital Marketing & SEO Client Partner",
   },
   {
     url: "/Cloudinary-images/4_ky3yra.png",
-    alt: "Client 3",
+    alt: "Brandmingo Enterprise SaaS Client Partner",
   },
   {
     url: "/Cloudinary-images/13_kwadt5.png",
-    alt: "Client 4",
+    alt: "Brandmingo Performance Marketing Client",
   },
   {
     url: "/Cloudinary-images/2_etbkdt.png",
-    alt: "Client 5",
+    alt: "Brandmingo Global Business Client Partner",
   },
 ];
 
@@ -349,9 +349,9 @@ const HeroTwo = ({ openPopup }) => {
 
           {/* Sub */}
           <motion.p className="hn-sub" variants={fadeUp(0.22)}>
-            We turn great ideas into working products.
+            Top-rated website development, performance marketing, and branding agency based in Noida,
             <br />
-            We focus on clear communication and understanding your business.
+            engineering high-speed custom web applications and growth solutions for businesses worldwide.
           </motion.p>
 
           {/* CTA */}
