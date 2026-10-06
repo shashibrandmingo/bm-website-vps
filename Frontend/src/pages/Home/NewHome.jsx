@@ -23,10 +23,10 @@ const NewHome = ({ openPopup }) => {
   return (
     <>
       <SEO
-        title="Brandmingo | Best Web Development & Digital Marketing Agency | Noida & Worldwide"
-        description="Brandmingo is a premier web development and digital marketing agency based in Noida Sector 62, delivering custom high-speed websites, React apps, Meta/Google Ads, and SEO for clients across Delhi NCR, USA, UK, UAE, and Worldwide."
+        title="Brandmingo | Best Website Development & Digital Marketing Company in Noida Sector 62"
+        description="Brandmingo is Noida's premier website development & digital marketing agency located at ITHUM Tower, Sector 62. Custom high-speed websites, React web apps, Google/Meta Ads, and #1 Google ranking SEO for businesses in Noida, Delhi NCR, and worldwide."
         canonical="https://brandmingo.com/"
-        keywords="best website development agency in noida, website development company in noida, digital marketing agency in noida, SEO agency Noida, web developers noida sector 62, Brandmingo, global web development agency, hire remote developers, offshore software development, performance marketing worldwide"
+        keywords="best website development agency in noida, website development company in noida, digital marketing agency in noida, seo agency in noida, web developers in noida sector 62, website designing company in noida, web development company in noida sector 63, best web designers in delhi ncr, it companies in noida sector 62, website designers near me, custom web development noida, react js development company noida, google ads agency noida, performance marketing agency noida, Brandmingo, hire remote developers noida"
       />
       {/* ── Above the fold: Instant Mount ── */}
       <HeroTwo openPopup={openPopup} />

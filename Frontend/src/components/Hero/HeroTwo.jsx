@@ -306,12 +306,16 @@ const HeroTwo = ({ openPopup }) => {
           {/* Eyebrow */}
           <motion.div className="hn-eyebrow-wrap" variants={fadeUp(0)}>
             <span className="hn-eyebrow">
-              Digital Agency &amp; Growth Partner
+              Top Web Development &amp; Digital Marketing Agency in Noida
             </span>
           </motion.div>
 
           {/* H1 */}
           <motion.h1 className="hn-title" variants={stagger}>
+            {/* SEO contextual heading for search crawlers */}
+            <span className="visually-hidden">
+              Brandmingo | Best Website Development Company in Noida Sector 62 &amp; Digital Marketing Agency -{" "}
+            </span>
             {/* Line 1 */}
             <motion.span className="hn-line1" variants={fadeUp(0.05)}>
               We Build <ArrowBadge />
@@ -349,9 +353,9 @@ const HeroTwo = ({ openPopup }) => {
 
           {/* Sub */}
           <motion.p className="hn-sub" variants={fadeUp(0.22)}>
-            Top-rated website development, performance marketing, and branding agency based in Noida,
+            Top-rated website development company, SEO, and performance marketing agency in Noida Sector 62.
             <br />
-            engineering high-speed custom web applications and growth solutions for businesses worldwide.
+            Engineering custom high-speed websites, React web apps, and scalable digital solutions for businesses in Noida, Delhi NCR &amp; worldwide.
           </motion.p>
 
           {/* CTA */}
