@@ -137,7 +137,14 @@
 }
 @media (max-width: 767px) {
   .bms-deck-viewport {
-    height: 660px;
+    min-height: 0;
+    height: 420px;
+  }
+}
+@media (max-width: 480px) {
+  .bms-deck-viewport {
+    min-height: 0;
+    height: 410px;
   }
 }
 
@@ -170,9 +177,9 @@
 }
 @media (max-width: 767px) {
   .bms-deck-panel {
-    height: calc(100% - 70px);
-    padding: 16px 14px 18px;
-    border-radius: 20px;
+    height: calc(100% - 35px);
+    padding: 13px 12px 12px;
+    border-radius: 18px;
   }
 }
 
@@ -185,7 +192,7 @@
 }
 @media (max-width: 767px) {
   .bms-deck-panel-header {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 }
 
@@ -242,9 +249,9 @@
 
 @media (max-width: 767px) {
   .bms-deck-website-btn {
-    padding: 5px 10px;
-    font-size: 11px;
-    gap: 5px;
+    padding: 3.5px 8px;
+    font-size: 9.5px;
+    gap: 4px;
   }
 }
 
@@ -265,10 +272,10 @@
 }
 @media (max-width: 767px) {
   .bms-deck-icon-box {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-    border-radius: 8px;
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+    border-radius: 7px;
   }
 }
 
@@ -279,6 +286,39 @@
   padding: 3px;
   box-sizing: border-box;
   display: block;
+}
+
+/* ── Wide Brand Pill (BeeShip & Horizontal Logos) ── */
+.bms-deck-brand-pill {
+  height: 38px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 3px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.bms-deck-brand-img {
+  height: 100%;
+  width: auto;
+  max-width: 125px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .bms-deck-brand-pill {
+    height: 28px;
+    padding: 2px 8px;
+    border-radius: 7px;
+  }
+  .bms-deck-brand-img {
+    max-width: 88px;
+  }
 }
 
 .bms-deck-title-col {
@@ -296,6 +336,11 @@
   font-family: var(--heading-font-family, "Syne", sans-serif);
   letter-spacing: -0.01em;
 }
+@media (max-width: 767px) {
+  .bms-deck-main-title {
+    font-size: 15px;
+  }
+}
 
 .bms-deck-subtitle {
   font-size: clamp(11px, 1vw, 12.5px);
@@ -304,8 +349,21 @@
   margin: 0;
   opacity: 0.85;
 }
+@media (max-width: 767px) {
+  .bms-deck-subtitle {
+    font-size: 9.5px;
+  }
+}
 
-/* ── Inner 4 Service Cards Grid ── */
+/* ── Inner 4 Service Cards Grid & Mobile Auto-Scroll Wrap ── */
+.bms-services-row-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
 .bms-services-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -322,20 +380,59 @@
   }
 }
 @media (max-width: 767px) {
+  .bms-services-row-wrap {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
   .bms-services-row {
+    flex: 1;
+    min-height: 0;
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 14px;
-    padding-bottom: 8px;
+    gap: 12px;
+    padding-bottom: 2px;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
   .bms-services-row::-webkit-scrollbar {
-    height: 5px;
+    display: none;
   }
-  .bms-services-row::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15);
+}
+
+/* ── Mobile Auto-Scroll Carousel Pagination Dots ── */
+.bms-carousel-dots {
+  display: none;
+}
+@media (max-width: 767px) {
+  .bms-carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding-bottom: 2px;
+    flex-shrink: 0;
+  }
+
+  .bms-carousel-dot {
+    width: 6px;
+    height: 6px;
     border-radius: 999px;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bms-carousel-dot.active {
+    width: 18px;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   }
 }
 
@@ -360,12 +457,16 @@
 }
 @media (max-width: 767px) {
   .bms-service-card {
-    min-width: 240px;
-    max-width: 250px;
+    min-width: 235px;
+    max-width: 245px;
     flex-shrink: 0;
     scroll-snap-align: start;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 14px;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -402,7 +503,10 @@
 }
 @media (max-width: 767px) {
   .bms-service-visual {
-    height: 118px;
+    height: 100px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+    flex-shrink: 0;
   }
 }
 
@@ -748,6 +852,54 @@
   font-family: monospace;
 }
 
+@media (max-width: 767px) {
+  .bms-mock-shipping-card {
+    padding: 6px 10px;
+    gap: 8px;
+  }
+  .bms-mock-box-3d {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+  .bms-mock-map-card {
+    width: 90px;
+    height: 58px;
+  }
+  .bms-mock-cargo-card {
+    padding: 6px 12px;
+    font-size: 18px;
+  }
+  .bms-pill-badge {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+  .bms-mock-globe-card,
+  .bms-mock-doc-card,
+  .bms-mock-sync-card,
+  .bms-mock-shield-card,
+  .bms-mock-capital-card,
+  .bms-mock-return-card,
+  .bms-mock-support-card {
+    padding: 6px 12px;
+    font-size: 16px;
+    gap: 3px;
+  }
+  .bms-mock-chat-bubble {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+  .bms-mock-bar-chart {
+    height: 44px;
+    padding: 6px 10px;
+  }
+  .bms-mock-checkout-card {
+    padding: 8px 12px;
+    width: 100px;
+  }
+}
+
 /* ── Service Content Area (Bottom) ── */
 .bms-service-content {
   display: flex;
@@ -788,7 +940,7 @@
 }
 @media (max-width: 767px) {
   .bms-service-name {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 
@@ -804,6 +956,13 @@
   color: #475569;
   flex-shrink: 0;
   transition: all 0.25s ease;
+}
+@media (max-width: 767px) {
+  .bms-service-arrow-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 8.5px;
+  }
 }
 
 .bms-service-card:hover .bms-service-arrow-btn {
@@ -823,9 +982,16 @@
   overflow: hidden;
 }
 @media (max-width: 767px) {
+  .bms-service-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
   .bms-service-desc {
-    font-size: 11px;
-    margin-bottom: 8px;
+    font-size: 10.5px;
+    line-height: 1.35;
+    margin-bottom: 5px;
   }
 }
 
@@ -839,12 +1005,24 @@
   flex-direction: column;
   gap: 8px;
 }
+@media (max-width: 767px) {
+  .bms-service-points {
+    padding-top: 5px;
+    gap: 4px;
+  }
+}
 
 .bms-point-item {
   display: flex;
   align-items: flex-start;
   gap: 7.5px;
   line-height: 1.35;
+}
+@media (max-width: 767px) {
+  .bms-point-item {
+    gap: 5px;
+    line-height: 1.25;
+  }
 }
 
 .bms-point-bullet {
@@ -862,6 +1040,14 @@
   box-shadow: 0 1px 2px rgba(16, 185, 129, 0.15);
   border: 1px solid rgba(16, 185, 129, 0.2);
 }
+@media (max-width: 767px) {
+  .bms-point-bullet {
+    width: 12px;
+    height: 12px;
+    font-size: 6.5px;
+    margin-top: 1px;
+  }
+}
 
 .bms-point-text {
   font-size: 11px;
@@ -874,6 +1060,12 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+@media (max-width: 767px) {
+  .bms-point-text {
+    font-size: 9.8px;
+    line-height: 1.25;
+  }
+}
 
 /* ── Card Bottom Explore Footer ── */
 .bms-service-footer {
@@ -884,6 +1076,12 @@
   justify-content: space-between;
   border-top: 1px solid #f1f5f9;
 }
+@media (max-width: 767px) {
+  .bms-service-footer {
+    margin-top: auto;
+    padding-top: 5px;
+  }
+}
 
 .bms-service-explore-text {
   font-size: 11px;
@@ -891,11 +1089,21 @@
   color: #64748b;
   transition: color 0.2s ease;
 }
+@media (max-width: 767px) {
+  .bms-service-explore-text {
+    font-size: 10px;
+  }
+}
 
 .bms-service-explore-icon {
   font-size: 10px;
   color: #94a3b8;
   transition: transform 0.2s ease, color 0.2s ease;
+}
+@media (max-width: 767px) {
+  .bms-service-explore-icon {
+    font-size: 9px;
+  }
 }
 
 .bms-service-card:hover .bms-service-explore-text {

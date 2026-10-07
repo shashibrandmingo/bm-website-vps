@@ -86,6 +86,7 @@ const DECK_CARDS_DATA = [
     title: "BeeShip",
     subtitle: "Multi-Courier Shipping & Logistics Suite",
     logo: "/Cloudinary-images/beeship.png",
+    isWideLogo: true,
     websiteUrl: "https://beeship.in/login",
     bgGradient: "linear-gradient(135deg, #0284c7 0%, #06b6d4 50%, #10b981 100%)",
     headerTextColor: "#ffffff",
@@ -297,6 +298,354 @@ const DECK_CARDS_DATA = [
     ],
   },
 ];
+
+// ════════════════════════════════════════════════════════════════════
+// INNER SERVICES ROW WITH SILKY AUTO-SCROLL ON MOBILE
+// ════════════════════════════════════════════════════════════════════
+function DeckServicesRow({ card, handleTriggerAccess }) {
+  const rowRef = useRef(null);
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const isInteractingRef = useRef(false);
+  const resumeTimerRef = useRef(null);
+  const [isInView, setIsInView] = React.useState(true);
+
+  // Detect when this card is in viewport on mobile
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Smooth auto-scroll loop for mobile (<768px)
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el || !isInView) return;
+
+    const interval = setInterval(() => {
+      if (window.innerWidth >= 768) return;
+      if (isInteractingRef.current) return;
+
+      const cards = el.querySelectorAll(".bms-service-card");
+      if (!cards || cards.length <= 1) return;
+
+      setActiveIndex((prev) => {
+        const next = (prev + 1) % cards.length;
+        const target = cards[next];
+        if (target) {
+          el.scrollTo({
+            left: target.offsetLeft - el.offsetLeft,
+            behavior: "smooth",
+          });
+        }
+        return next;
+      });
+    }, 2800);
+
+    return () => clearInterval(interval);
+  }, [isInView, card.services.length]);
+
+  // Sync active dot indicator when user manually swipes
+  const handleScroll = () => {
+    const el = rowRef.current;
+    if (!el) return;
+    const cards = el.querySelectorAll(".bms-service-card");
+    if (!cards || cards.length === 0) return;
+
+    const scrollLeft = el.scrollLeft;
+    let closestIndex = 0;
+    let minDiff = Infinity;
+    cards.forEach((c, idx) => {
+      const cardOffset = c.offsetLeft - el.offsetLeft;
+      const diff = Math.abs(cardOffset - scrollLeft);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIndex = idx;
+      }
+    });
+    setActiveIndex(closestIndex);
+  };
+
+  const pauseAutoScroll = () => {
+    isInteractingRef.current = true;
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+  };
+
+  const resumeAutoScroll = () => {
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      isInteractingRef.current = false;
+    }, 3500);
+  };
+
+  const scrollToIndex = (index) => {
+    const el = rowRef.current;
+    if (!el) return;
+    const cards = el.querySelectorAll(".bms-service-card");
+    const target = cards[index];
+    if (target) {
+      pauseAutoScroll();
+      el.scrollTo({
+        left: target.offsetLeft - el.offsetLeft,
+        behavior: "smooth",
+      });
+      setActiveIndex(index);
+      resumeAutoScroll();
+    }
+  };
+
+  return (
+    <div className="bms-services-row-wrap">
+      <div
+        className="bms-services-row"
+        ref={rowRef}
+        onScroll={handleScroll}
+        onTouchStart={pauseAutoScroll}
+        onTouchEnd={resumeAutoScroll}
+        onPointerDown={pauseAutoScroll}
+        onPointerUp={resumeAutoScroll}
+      >
+        {card.services.map((srv) => (
+          <a
+            key={srv.id}
+            href={srv.link}
+            className="bms-service-card"
+            onClick={(e) => {
+              if (srv.link === "#") {
+                e.preventDefault();
+                handleTriggerAccess();
+              }
+            }}
+          >
+            {/* Visual Graphic Area */}
+            <div className="bms-service-visual">
+              {srv.image ? (
+                <div className="bms-service-real-img-wrap">
+                  <div className="bms-browser-bar">
+                    <span className="bms-browser-dot bms-dot-red" />
+                    <span className="bms-browser-dot bms-dot-yellow" />
+                    <span className="bms-browser-dot bms-dot-green" />
+                    <span className="bms-browser-url-mock">
+                      {card.id === "worksensy"
+                        ? "app.worksensy.com"
+                        : card.id === "beeship"
+                        ? "app.beeship.in"
+                        : card.id === "cartsensy"
+                        ? "app.cartsensy.io"
+                        : "app.platform.io"}
+                    </span>
+                  </div>
+                  <div className="bms-real-img-viewport">
+                    <img
+                      src={srv.image}
+                      alt={srv.title}
+                      className={`bms-service-real-img ${srv.imageCenter ? "bms-img-center" : ""}`}
+                      loading="lazy"
+                    />
+                    <div className="bms-service-img-overlay" />
+                  </div>
+                </div>
+              ) : (
+                <div className="bms-service-mock-graphic">
+                  <div className="bms-mock-illustration-slot">
+                    {srv.visualType === "shipping" && (
+                      <div className="bms-mock-shipping-card">
+                        <div className="bms-mock-date">
+                          <span>Estimated Delivery</span>
+                          <strong>24 hrs Express</strong>
+                        </div>
+                        <div className="bms-mock-box-3d">
+                          <i className="fa-solid fa-box-open" />
+                        </div>
+                      </div>
+                    )}
+
+                    {srv.visualType === "quick" && (
+                      <div className="bms-mock-map-card">
+                        <div className="bms-mock-pulse-dot" />
+                        <span className="bms-mock-route-tag">
+                          <i className="fa-solid fa-route" /> 15 Mins
+                        </span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "cargo" && (
+                      <div className="bms-mock-cargo-card">
+                        <i className="fa-solid fa-truck-moving" />
+                        <span>Multi-Modal B2B</span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "fulfillment" && (
+                      <div className="bms-mock-store-pills">
+                        <span className="bms-pill-badge bms-pill-shopify">
+                          <i className="fa-brands fa-shopify" />
+                        </span>
+                        <span className="bms-pill-badge bms-pill-woo">
+                          <i className="fa-brands fa-wordpress" />
+                        </span>
+                        <span className="bms-pill-badge bms-pill-amazon">
+                          <i className="fa-brands fa-amazon" />
+                        </span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "global" && (
+                      <div className="bms-mock-globe-card">
+                        <i className="fa-solid fa-earth-americas" />
+                        <span>Global Direct</span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "customs" && (
+                      <div className="bms-mock-doc-card">
+                        <i className="fa-solid fa-stamp" />
+                        <span>Auto IOSS Cleared</span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "currency" && (
+                      <div className="bms-mock-currency-card">
+                        <span className="bms-currency-chip">$ USD</span>
+                        <span className="bms-currency-chip">€ EUR</span>
+                        <span className="bms-currency-chip">₹ INR</span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "channels" && (
+                      <div className="bms-mock-sync-card">
+                        <i className="fa-solid fa-arrows-rotate fa-spin" />
+                        <span>Live Cloud Sync</span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "checkout" && (
+                      <div className="bms-mock-checkout-card">
+                        <span className="bms-fast-pill">⚡ 1-Click</span>
+                        <div className="bms-mock-address-bar" />
+                      </div>
+                    )}
+
+                    {srv.visualType === "whatsapp" && (
+                      <div className="bms-mock-chat-bubble">
+                        <i className="fa-brands fa-whatsapp" />
+                        <span>Order Confirmed! 🎉</span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "fraud" && (
+                      <div className="bms-mock-shield-card">
+                        <i className="fa-solid fa-shield-halved" />
+                        <span>Zero Fraud Score</span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "trends" && (
+                      <div className="bms-mock-bar-chart">
+                        <span style={{ height: "45%" }} />
+                        <span style={{ height: "70%" }} />
+                        <span style={{ height: "95%" }} />
+                        <span style={{ height: "60%" }} />
+                      </div>
+                    )}
+
+                    {srv.visualType === "capital" && (
+                      <div className="bms-mock-capital-card">
+                        <i className="fa-solid fa-arrow-trend-up" />
+                        <span>Instant Limit</span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "returns" && (
+                      <div className="bms-mock-return-card">
+                        <i className="fa-solid fa-rotate-left" />
+                        <span>Instant Refund</span>
+                      </div>
+                    )}
+
+                    {srv.visualType === "api" && (
+                      <div className="bms-mock-code-card">
+                        <code>&lt;200 OK API/&gt;</code>
+                      </div>
+                    )}
+
+                    {srv.visualType === "support" && (
+                      <div className="bms-mock-support-card">
+                        <i className="fa-solid fa-headset" />
+                        <span>&lt;1m Response</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Content Area */}
+            <div className="bms-service-content">
+              <div className="bms-service-header-row">
+                <div className="bms-service-title-flex">
+                  <span
+                    className="bms-service-icon"
+                    style={{ color: srv.iconColor }}
+                  >
+                    <i className={srv.icon} />
+                  </span>
+                  <h3 className="bms-service-name">{srv.title}</h3>
+                </div>
+                <span className="bms-service-arrow-btn">
+                  <i className="fa-solid fa-arrow-up-right-from-square" />
+                </span>
+              </div>
+              <p className="bms-service-desc">{srv.desc}</p>
+
+              {/* Point-wise feature bullet list */}
+              {srv.points && srv.points.length > 0 && (
+                <ul className="bms-service-points">
+                  {srv.points.map((pt, pIdx) => (
+                    <li key={pIdx} className="bms-point-item">
+                      <span className="bms-point-bullet">
+                        <i className="fa-solid fa-check" />
+                      </span>
+                      <span className="bms-point-text">{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {/* Bottom explore footer */}
+              <div className="bms-service-footer">
+                <span className="bms-service-explore-text">Explore feature</span>
+                <i className="fa-solid fa-arrow-right bms-service-explore-icon" />
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* Pagination indicator dots on mobile */}
+      <div className="bms-carousel-dots" aria-hidden="true">
+        {card.services.map((_, idx) => (
+          <button
+            key={idx}
+            type="button"
+            className={`bms-carousel-dot ${idx === activeIndex ? "active" : ""}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              scrollToIndex(idx);
+            }}
+            aria-label={`Slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Products({ openPopup }) {
   const [openFaqIndex, setOpenFaqIndex] = React.useState(null);
@@ -518,7 +867,7 @@ export default function Products({ openPopup }) {
 
     // ── MOBILE ANIMATION (<768px) ──
     mm.add("(max-width: 767px)", () => {
-      const MOBILE_STEP = 22;
+      const MOBILE_STEP = 12;
       const ACTIVE_SCALE = 1.02;
       const STACKED_SCALE = 0.975;
       const getInnerCards = (card) => card?.querySelectorAll(".bms-service-card");
@@ -552,7 +901,7 @@ export default function Products({ openPopup }) {
         scrollTrigger: {
           trigger: wrapper,
           start: "top 65px",
-          end: "+=1500",
+          end: "+=1300",
           pin: true,
           scrub: 0.4,
           anticipatePin: 1,
@@ -644,24 +993,36 @@ export default function Products({ openPopup }) {
                 <div className="bms-deck-panel-header">
                   <div className="bms-deck-title-row">
                     <div className="bms-deck-title-left">
-                      <div className="bms-deck-icon-box">
-                        {card.logo ? (
+                      {card.isWideLogo ? (
+                        <div className="bms-deck-brand-pill">
                           <img
                             src={card.logo}
                             alt={card.title}
-                            className="bms-deck-logo-img"
+                            className="bms-deck-brand-img"
                           />
-                        ) : (
-                          <i className={card.icon} />
-                        )}
-                      </div>
+                        </div>
+                      ) : (
+                        <div className="bms-deck-icon-box">
+                          {card.logo ? (
+                            <img
+                              src={card.logo}
+                              alt={card.title}
+                              className="bms-deck-logo-img"
+                            />
+                          ) : (
+                            <i className={card.icon} />
+                          )}
+                        </div>
+                      )}
                       <div className="bms-deck-title-col">
-                        <h2
-                          className="bms-deck-main-title"
-                          style={{ color: card.headerTextColor }}
-                        >
-                          {card.title}
-                        </h2>
+                        {!card.isWideLogo && (
+                          <h2
+                            className="bms-deck-main-title"
+                            style={{ color: card.headerTextColor }}
+                          >
+                            {card.title}
+                          </h2>
+                        )}
                         {card.subtitle && (
                           <p
                             className="bms-deck-subtitle"
@@ -688,224 +1049,11 @@ export default function Products({ openPopup }) {
                   </div>
                 </div>
 
-                {/* ── INNER 4 SERVICE CARDS (CLICKABLE) ── */}
-                <div className="bms-services-row">
-                  {card.services.map((srv) => (
-                    <a
-                      key={srv.id}
-                      href={srv.link}
-                      className="bms-service-card"
-                      onClick={(e) => {
-                        if (srv.link === "#") {
-                          e.preventDefault();
-                          handleTriggerAccess();
-                        }
-                      }}
-                    >
-                      {/* Visual Graphic Area */}
-                      <div className="bms-service-visual">
-                        {srv.image ? (
-                          <div className="bms-service-real-img-wrap">
-                            <div className="bms-browser-bar">
-                              <span className="bms-browser-dot bms-dot-red" />
-                              <span className="bms-browser-dot bms-dot-yellow" />
-                              <span className="bms-browser-dot bms-dot-green" />
-                              <span className="bms-browser-url-mock">
-                                {card.id === "worksensy"
-                                  ? "app.worksensy.com"
-                                  : card.id === "beeship"
-                                  ? "app.beeship.in"
-                                  : card.id === "cartsensy"
-                                  ? "app.cartsensy.io"
-                                  : "app.platform.io"}
-                              </span>
-                            </div>
-                            <div className="bms-real-img-viewport">
-                              <img
-                                src={srv.image}
-                                alt={srv.title}
-                                className={`bms-service-real-img ${srv.imageCenter ? "bms-img-center" : ""}`}
-                                loading="lazy"
-                              />
-                              <div className="bms-service-img-overlay" />
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="bms-service-mock-graphic">
-                            <div className="bms-mock-illustration-slot">
-                            {srv.visualType === "shipping" && (
-                              <div className="bms-mock-shipping-card">
-                                <div className="bms-mock-date">
-                                  <span>Estimated Delivery</span>
-                                  <strong>24 hrs Express</strong>
-                                </div>
-                                <div className="bms-mock-box-3d">
-                                  <i className="fa-solid fa-box-open" />
-                                </div>
-                              </div>
-                            )}
-
-                            {srv.visualType === "quick" && (
-                              <div className="bms-mock-map-card">
-                                <div className="bms-mock-pulse-dot" />
-                                <span className="bms-mock-route-tag">
-                                  <i className="fa-solid fa-route" /> 15 Mins
-                                </span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "cargo" && (
-                              <div className="bms-mock-cargo-card">
-                                <i className="fa-solid fa-truck-moving" />
-                                <span>Multi-Modal B2B</span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "fulfillment" && (
-                              <div className="bms-mock-store-pills">
-                                <span className="bms-pill-badge bms-pill-shopify">
-                                  <i className="fa-brands fa-shopify" />
-                                </span>
-                                <span className="bms-pill-badge bms-pill-woo">
-                                  <i className="fa-brands fa-wordpress" />
-                                </span>
-                                <span className="bms-pill-badge bms-pill-amazon">
-                                  <i className="fa-brands fa-amazon" />
-                                </span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "global" && (
-                              <div className="bms-mock-globe-card">
-                                <i className="fa-solid fa-earth-americas" />
-                                <span>Global Direct</span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "customs" && (
-                              <div className="bms-mock-doc-card">
-                                <i className="fa-solid fa-stamp" />
-                                <span>Auto IOSS Cleared</span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "currency" && (
-                              <div className="bms-mock-currency-card">
-                                <span className="bms-currency-chip">$ USD</span>
-                                <span className="bms-currency-chip">€ EUR</span>
-                                <span className="bms-currency-chip">₹ INR</span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "channels" && (
-                              <div className="bms-mock-sync-card">
-                                <i className="fa-solid fa-arrows-rotate fa-spin" />
-                                <span>Live Cloud Sync</span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "checkout" && (
-                              <div className="bms-mock-checkout-card">
-                                <span className="bms-fast-pill">⚡ 1-Click</span>
-                                <div className="bms-mock-address-bar" />
-                              </div>
-                            )}
-
-                            {srv.visualType === "whatsapp" && (
-                              <div className="bms-mock-chat-bubble">
-                                <i className="fa-brands fa-whatsapp" />
-                                <span>Order Confirmed! 🎉</span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "fraud" && (
-                              <div className="bms-mock-shield-card">
-                                <i className="fa-solid fa-shield-halved" />
-                                <span>Zero Fraud Score</span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "trends" && (
-                              <div className="bms-mock-bar-chart">
-                                <span style={{ height: "45%" }} />
-                                <span style={{ height: "70%" }} />
-                                <span style={{ height: "95%" }} />
-                                <span style={{ height: "60%" }} />
-                              </div>
-                            )}
-
-                            {srv.visualType === "capital" && (
-                              <div className="bms-mock-capital-card">
-                                <i className="fa-solid fa-arrow-trend-up" />
-                                <span>Instant Limit</span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "returns" && (
-                              <div className="bms-mock-return-card">
-                                <i className="fa-solid fa-rotate-left" />
-                                <span>Instant Refund</span>
-                              </div>
-                            )}
-
-                            {srv.visualType === "api" && (
-                              <div className="bms-mock-code-card">
-                                <code>&lt;200 OK API/&gt;</code>
-                              </div>
-                            )}
-
-                            {srv.visualType === "support" && (
-                              <div className="bms-mock-support-card">
-                                <i className="fa-solid fa-headset" />
-                                <span>&lt;1m Response</span>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                        )}
-                      </div>
-
-                      {/* Content Area */}
-                      <div className="bms-service-content">
-                        <div className="bms-service-header-row">
-                          <div className="bms-service-title-flex">
-                            <span
-                              className="bms-service-icon"
-                              style={{ color: srv.iconColor }}
-                            >
-                              <i className={srv.icon} />
-                            </span>
-                            <h3 className="bms-service-name">{srv.title}</h3>
-                          </div>
-                          <span className="bms-service-arrow-btn">
-                            <i className="fa-solid fa-arrow-up-right-from-square" />
-                          </span>
-                        </div>
-                        <p className="bms-service-desc">{srv.desc}</p>
-
-                        {/* Point-wise feature bullet list */}
-                        {srv.points && srv.points.length > 0 && (
-                          <ul className="bms-service-points">
-                            {srv.points.map((pt, pIdx) => (
-                              <li key={pIdx} className="bms-point-item">
-                                <span className="bms-point-bullet">
-                                  <i className="fa-solid fa-check" />
-                                </span>
-                                <span className="bms-point-text">{pt}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-
-                        {/* Bottom explore footer */}
-                        <div className="bms-service-footer">
-                          <span className="bms-service-explore-text">Explore feature</span>
-                          <i className="fa-solid fa-arrow-right bms-service-explore-icon" />
-                        </div>
-                      </div>
-                    </a>
-                  ))}
-                </div>
+                {/* ── INNER 4 SERVICE CARDS (WITH AUTO-SCROLL ON MOBILE) ── */}
+                <DeckServicesRow
+                  card={card}
+                  handleTriggerAccess={handleTriggerAccess}
+                />
               </div>
             ))}
           </div>
