@@ -1,234 +1,587 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  STACK_PRODUCTS,
-  PRODUCTS_FAQ,
-} from "../../data/productsData";
+import { Link } from "react-router-dom";
 import SEO from "../../components/SEO/SEO";
+import { PRODUCTS_FAQ } from "../../data/productsData";
 import "./Products.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Products({ openPopup }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+// ── 4 Main Large Cards Data matching Shiprocket reference ──
+const DECK_CARDS_DATA = [
+  {
+    id: "worksensy",
+    title: "WorkSensy",
+    subtitle: "Sales CRM & Lead Automation Pipeline",
+    logo: "/Cloudinary-images/worksensy.png",
+    websiteUrl: "https://www.worksensy.com/",
+    bgGradient: "linear-gradient(135deg, #7c3aed 0%, #6366f1 45%, #0ea5e9 100%)",
+    headerTextColor: "#ffffff",
+    services: [
+      {
+        id: "ws-1",
+        title: "Sales Trends & Analytics",
+        desc: "Monitor live conversion velocity, revenue targets, and performance charts in real-time.",
+        icon: "fa-solid fa-chart-line",
+        iconColor: "#7c3aed",
+        badge: "Live Trends",
+        link: "#",
+        image: "/Cloudinary-images/worksensy-screen-1.png",
+        points: [
+          "Live conversion velocity & win rates",
+          "Revenue target forecasting & pacing",
+          "Sales rep activity & efficiency radar",
+        ],
+      },
+      {
+        id: "ws-2",
+        title: "Leads Overview & Table",
+        desc: "Centralized lead repository with 1-click WhatsApp connect, status tags, and export filters.",
+        icon: "fa-solid fa-users",
+        iconColor: "#6366f1",
+        badge: "Smart Funnel",
+        link: "#",
+        image: "/Cloudinary-images/worksensy-screen-2.png",
+        points: [
+          "1-Click direct WhatsApp & call trigger",
+          "Multi-source lead capture (Meta, Google, Web)",
+          "Dynamic tag filters & instant bulk export",
+        ],
+      },
+      {
+        id: "ws-3",
+        title: "Marketing ROI & Distribution",
+        desc: "Analyze ad channel attribution and automate round-robin lead allocation to sales agents.",
+        icon: "fa-solid fa-bullseye",
+        iconColor: "#0284c7",
+        badge: "Round-Robin",
+        link: "#",
+        image: "/Cloudinary-images/worksensy-screen-3.png",
+        points: [
+          "Ad channel attribution & CAC analytics",
+          "Automated round-robin agent assignment",
+          "Campaign conversion vs ad spend tracking",
+        ],
+      },
+      {
+        id: "ws-4",
+        title: "Pipeline & Follow-Up Radar",
+        desc: "Visual stage pipeline funnel with automated overdue reminders and instant scheduling.",
+        icon: "fa-solid fa-calendar-check",
+        iconColor: "#0ea5e9",
+        badge: "Zero Missed Deals",
+        link: "#",
+        image: "/Cloudinary-images/worksensy-screen-4.png",
+        points: [
+          "Visual drag-and-drop deal pipeline",
+          "Smart overdue deal alerts & nudges",
+          "Automated follow-up reminder calendar",
+        ],
+      },
+    ],
+  },
+  {
+    id: "beeship",
+    title: "BeeShip",
+    subtitle: "Multi-Courier Shipping & Logistics Suite",
+    logo: "/Cloudinary-images/beeship.png",
+    websiteUrl: "https://beeship.in/login",
+    bgGradient: "linear-gradient(135deg, #0284c7 0%, #06b6d4 50%, #10b981 100%)",
+    headerTextColor: "#ffffff",
+    services: [
+      {
+        id: "s2-1",
+        title: "Multi-Carrier Shipping Hub",
+        desc: "Unified console to compare courier performance, book shipments, and track volume metrics.",
+        icon: "fa-solid fa-truck-fast",
+        iconColor: "#0284c7",
+        badge: "Carrier Radar",
+        link: "#",
+        image: "/Cloudinary-images/beeship-screen-1.png",
+        points: [
+          "Courier performance matrix (Bluedart, Delhivery)",
+          "1-Click order creation & bulk shipment upload",
+          "Automated courier rate comparison & routing",
+        ],
+      },
+      {
+        id: "s2-2",
+        title: "Unified Shipment Tracking",
+        desc: "Centralized order book with real-time status updates, Shopify integration, and courier AWB sync.",
+        icon: "fa-solid fa-boxes-packing",
+        iconColor: "#059669",
+        badge: "Live AWB Sync",
+        link: "#",
+        image: "/Cloudinary-images/beeship-screen-2.png",
+        points: [
+          "Multi-store order sync (Shopify, WooCommerce)",
+          "Live milestone AWB tracking with stage filters",
+          "Automated Estimated Delivery Date (EDD) radar",
+        ],
+      },
+      {
+        id: "s2-3",
+        title: "Smart NDR & Re-Attempt Engine",
+        desc: "Automated Non-Delivery Report workflows to convert failed delivery attempts into delivered orders.",
+        icon: "fa-solid fa-arrows-rotate",
+        iconColor: "#0891b2",
+        badge: "Zero RTO Loss",
+        link: "#",
+        image: "/Cloudinary-images/beeship-screen-3.png",
+        points: [
+          "Automated buyer WhatsApp & SMS re-attempt flow",
+          "Real-time NDR remarks & courier ticket escalation",
+          "Reduce costly RTO returns by up to 38%",
+        ],
+      },
+      {
+        id: "s2-4",
+        title: "Billing & Shipping Rate Cards",
+        desc: "Transparent multi-courier billing rates across India with instant B2C shipping rate calculator.",
+        icon: "fa-solid fa-receipt",
+        iconColor: "#10b981",
+        badge: "B2C Calculator",
+        link: "#",
+        image: "/Cloudinary-images/beeship-screen-4.png",
+        points: [
+          "Pre-negotiated city, state & metro rate slabs",
+          "Transparent COD fee & weight anomaly shield",
+          "Instant B2C rate calculator & GST tax invoices",
+        ],
+      },
+    ],
+  },
+  {
+    id: "cartsensy",
+    title: "CartSensy",
+    subtitle: "Abandoned Cart & Revenue Recovery System",
+    icon: "fa-solid fa-cart-arrow-down",
+    bgGradient: "linear-gradient(135deg, #ea580c 0%, #f59e0b 50%, #84cc16 100%)",
+    headerTextColor: "#ffffff",
+    services: [
+      {
+        id: "s3-1",
+        title: "Real-Time Recovery Dashboard",
+        desc: "Monitor live checkout leads, abandoned carts, converted orders, and recover lost revenue in real time.",
+        icon: "fa-solid fa-chart-pie",
+        iconColor: "#ea580c",
+        badge: "Live Telemetry",
+        link: "#",
+        image: "/Cloudinary-images/cartsensy-screen-1.png",
+        imageCenter: true,
+        points: [
+          "Live checkout lead tracking & abandonment alerts",
+          "Revenue loss & converted order analytics",
+          "Custom status filters & instant Excel export",
+        ],
+      },
+      {
+        id: "s3-2",
+        title: "Shopify & GoKwik Webhook Sync",
+        desc: "Connect your eCommerce store in minutes with plug-and-play webhooks for Shopify and GoKwik.",
+        icon: "fa-solid fa-code-merge",
+        iconColor: "#16a34a",
+        badge: "1-Click Sync",
+        link: "#",
+        image: "/Cloudinary-images/cartsensy-screen-2.png",
+        imageCenter: true,
+        points: [
+          "Instant Shopify checkout creation webhook listener",
+          "Native GoKwik 1-click checkout integration",
+          "Zero-code setup with automatic store handshake",
+        ],
+      },
+      {
+        id: "s3-3",
+        title: "Instant Store Onboarding",
+        desc: "Seamless merchant registration designed to start recovering high-intent abandoned carts within minutes.",
+        icon: "fa-solid fa-store",
+        iconColor: "#ca8a04",
+        badge: "Fast Launch",
+        link: "#",
+        image: "/Cloudinary-images/cartsensy-screen-3.png",
+        imageCenter: true,
+        points: [
+          "Rapid 60-second store setup & platform pairing",
+          "Multi-platform support (Shopify, WooCommerce)",
+          "Automated revenue recovery engine activation",
+        ],
+      },
+      {
+        id: "s3-4",
+        title: "Secure Merchant Portal",
+        desc: "Enterprise-grade secure portal for store owners to manage recovery campaigns, agents, and webhooks.",
+        icon: "fa-solid fa-shield-halved",
+        iconColor: "#65a30d",
+        badge: "Encrypted Auth",
+        link: "#",
+        image: "/Cloudinary-images/cartsensy-screen-4.png",
+        imageCenter: true,
+        points: [
+          "Role-based access control & multi-store manager",
+          "Encrypted credential auth & session safeguards",
+          "Direct store telemetry & webhook health logs",
+        ],
+      },
+    ],
+  },
+  {
+    id: "metaautopost",
+    title: "Meta AutoPost",
+    subtitle: "Multi-Account Social Media Scheduler",
+    icon: "fa-solid fa-share-nodes",
+    bgGradient: "linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #ec4899 100%)",
+    headerTextColor: "#ffffff",
+    services: [
+      {
+        id: "s4-1",
+        title: "Instant Capital Financing",
+        desc: "Revenue-based working capital financing to scale your inventory and marketing ads.",
+        icon: "fa-solid fa-coins",
+        iconColor: "#6366f1",
+        badge: "Fast Approvals",
+        link: "#",
+        visualType: "capital",
+        points: [
+          "Fast revenue-based working capital loans",
+          "Collateral-free approval within 24 hours",
+          "Repay as you grow with flexible revenue share",
+        ],
+      },
+      {
+        id: "s4-2",
+        title: "Unified Returns & Exchanges",
+        desc: "Branded self-serve return portal with instant refunds and reverse pickup automation.",
+        icon: "fa-solid fa-arrow-right-arrow-left",
+        iconColor: "#9333ea",
+        badge: "Self-Serve Portal",
+        link: "#",
+        visualType: "returns",
+        points: [
+          "White-labeled self-serve return portal",
+          "Automated reverse pickup courier booking",
+          "Instant store credit or bank refund flow",
+        ],
+      },
+      {
+        id: "s4-3",
+        title: "Enterprise REST APIs",
+        desc: "Developer-first GraphQL and Webhooks that integrate seamlessly into bespoke ERPs.",
+        icon: "fa-solid fa-code",
+        iconColor: "#db2777",
+        badge: "Sub-10ms Latency",
+        link: "#",
+        visualType: "api",
+        points: [
+          "GraphQL & REST APIs with sub-10ms response",
+          "Real-time webhooks for 50+ event triggers",
+          "SDKs for Node, Python, PHP, and Go",
+        ],
+      },
+      {
+        id: "s4-4",
+        title: "Dedicated SLA Support",
+        desc: "24/7 dedicated account manager, priority incident escalation and 99.99% uptime guarantee.",
+        icon: "fa-solid fa-headset",
+        iconColor: "#7c3aed",
+        badge: "24/7 Priority",
+        link: "#",
+        visualType: "support",
+        points: [
+          "Dedicated Enterprise account manager",
+          "Guaranteed 99.99% system uptime SLA",
+          "Priority 15-minute response on critical issues",
+        ],
+      },
+    ],
+  },
+];
 
-  const sectionRef = useRef(null);
+export default function Products({ openPopup }) {
+  const [openFaqIndex, setOpenFaqIndex] = React.useState(null);
+  const deckWrapperRef = useRef(null);
   const cardsRef = useRef([]);
-  const timelineRef = useRef(null);
 
   useEffect(() => {
-    document.title = "Our Products | Modern SaaS Workflow Ecosystem | Brandmingo";
+    document.title = "Products Ecosystem | Brandmingo";
     window.scrollTo(0, 0);
   }, []);
 
   // ════════════════════════════════════════════════════════════════════
-  // GSAP SCROLLTRIGGER 3D STACK ANIMATION (CENTER-LOCKED & FLUID)
+  // GSAP SCROLLTRIGGER: SHIPROCKET-STYLE LAYERED STACK DECK
   // ════════════════════════════════════════════════════════════════════
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    const wrapper = deckWrapperRef.current;
+    if (!wrapper) return;
 
     const cards = cardsRef.current.filter(Boolean);
+    if (cards.length < 2) return;
 
     const mm = gsap.matchMedia();
 
     // ── DESKTOP & TABLET ANIMATION (min-width: 768px) ──
     mm.add("(min-width: 768px)", () => {
-      // 1. Initial State: All 4 cards visible in stepped 3D cascade!
-      // Card 0: Active, expanded (height: 330px, y: 0)
+      const STACK_STEP = 28; // tight, sleek stacked deck gap (reduced gap)
+      const ACTIVE_SCALE = 1.03;
+      const STACKED_SCALE = 0.965;
+
+      const getInnerCards = (card) => card?.querySelectorAll(".bms-service-card");
+
+      // ── Initial State at scroll position 0 ──
+      // Card 0: Active, scaled up on GPU
       gsap.set(cards[0], {
         y: 0,
-        height: 330,
-        scale: 1,
+        top: 0,
+        scale: ACTIVE_SCALE,
+        transformOrigin: "center top",
         opacity: 1,
-        zIndex: 40,
-        filter: "brightness(1)",
+        zIndex: 1,
+        force3D: true,
       });
-      // Card 1: Peek header below Card 0 (height: 52px, y: 340px)
-      gsap.set(cards[1], {
-        y: 340,
-        height: 52,
-        scale: 0.98,
-        opacity: 0.92,
-        zIndex: 30,
-        filter: "brightness(0.92)",
-      });
-      // Card 2: Peek header below Card 1 (height: 52px, y: 398px)
-      gsap.set(cards[2], {
-        y: 398,
-        height: 52,
-        scale: 0.96,
-        opacity: 0.85,
-        zIndex: 20,
-        filter: "brightness(0.85)",
-      });
-      // Card 3: Peek header below Card 2 (height: 52px, y: 456px)
-      gsap.set(cards[3], {
-        y: 456,
-        height: 52,
-        scale: 0.94,
-        opacity: 0.78,
-        zIndex: 10,
-        filter: "brightness(0.78)",
+      if (getInnerCards(cards[0])) {
+        gsap.set(getInnerCards(cards[0]), { y: 0, opacity: 1, scale: 1, force3D: true });
+      }
+
+      // Cards 1, 2, 3: Start below viewport, stacked scale, inner cards prepared to rise
+      cards.slice(1).forEach((card, i) => {
+        gsap.set(card, {
+          yPercent: 110,
+          top: (i + 1) * STACK_STEP,
+          scale: STACKED_SCALE,
+          transformOrigin: "center top",
+          opacity: 0.92,
+          zIndex: i + 2,
+          force3D: true,
+        });
+        if (getInnerCards(card)) {
+          gsap.set(getInnerCards(card), {
+            y: 35,
+            opacity: 0.25,
+            scale: 0.94,
+            force3D: true,
+          });
+        }
       });
 
-      // 2. Scrubbed Timeline with Pinning below navbar
-      // Pin starts at "top 80px" so the entire section is centered and NEVER cut off by the navbar!
-      // Scroll distance is concise (1400px) so the page smoothly unlocks after the last card without feeling stuck!
+      // ── Silky-Smooth Scrubbed Pinning Timeline ──
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: section,
-          start: "top 80px",
-          end: "+=1400",
+          trigger: wrapper,
+          start: "top 75px",
+          end: "+=1900",
           pin: true,
-          scrub: 0.6,
+          scrub: 0.5,
           anticipatePin: 1,
-          onUpdate: (self) => {
-            const p = self.progress;
-            let current = 0;
-            if (p >= 0.72) current = 3;
-            else if (p >= 0.38) current = 2;
-            else if (p >= 0.12) current = 1;
-            setActiveIndex(current);
-          },
+          fastScrollEnd: true,
         },
       });
 
-      timelineRef.current = tl;
-
-      // ── TRANSITION 1: Card 0 → Card 1 (t = 0 to 1) ──
-      tl.to(cards[0], {
-        y: -90,
-        scale: 0.95,
-        opacity: 0,
-        ease: "power2.inOut",
-        duration: 1,
-      }, 0)
-        .to(cards[1], {
-          y: 0,
-          height: 330,
-          scale: 1,
-          opacity: 1,
-          zIndex: 40,
-          filter: "brightness(1)",
-          ease: "power2.inOut",
-          duration: 1,
-        }, 0)
-        .to(cards[2], {
-          y: 340,
-          scale: 0.98,
+      // ── TRANSITION 1: Card 0 shrinks → Card 1 rises & its inner cards float up ──
+      tl.to(
+        cards[0],
+        {
+          scale: STACKED_SCALE,
           opacity: 0.92,
-          zIndex: 30,
-          filter: "brightness(0.92)",
-          ease: "power2.inOut",
+          ease: "none",
           duration: 1,
-        }, 0)
-        .to(cards[3], {
-          y: 398,
-          scale: 0.96,
-          opacity: 0.85,
-          zIndex: 20,
-          filter: "brightness(0.85)",
-          ease: "power2.inOut",
-          duration: 1,
-        }, 0);
+        },
+        0
+      );
+      if (getInnerCards(cards[0])) {
+        tl.to(
+          getInnerCards(cards[0]),
+          { y: 12, opacity: 0.8, scale: 0.98, ease: "none", duration: 0.8 },
+          0
+        );
+      }
 
-      // ── TRANSITION 2: Card 1 → Card 2 (t = 1 to 2) ──
-      tl.to(cards[1], {
-        y: -90,
-        scale: 0.95,
-        opacity: 0,
-        ease: "power2.inOut",
-        duration: 1,
-      }, 1)
-        .to(cards[2], {
-          y: 0,
-          height: 330,
-          scale: 1,
+      tl.to(
+        cards[1],
+        {
+          yPercent: 0,
+          scale: ACTIVE_SCALE,
           opacity: 1,
-          zIndex: 40,
-          filter: "brightness(1)",
-          ease: "power2.inOut",
+          ease: "none",
           duration: 1,
-        }, 1)
-        .to(cards[3], {
-          y: 340,
-          scale: 0.98,
+        },
+        0
+      );
+      if (getInnerCards(cards[1])) {
+        tl.to(
+          getInnerCards(cards[1]),
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            stagger: 0.05,
+            ease: "none",
+            duration: 0.85,
+          },
+          0.12
+        );
+      }
+
+      // ── TRANSITION 2: Card 1 shrinks → Card 2 rises & its inner cards float up ──
+      tl.to(
+        cards[1],
+        {
+          scale: STACKED_SCALE,
           opacity: 0.92,
-          zIndex: 30,
-          filter: "brightness(0.92)",
-          ease: "power2.inOut",
+          ease: "none",
           duration: 1,
-        }, 1);
+        },
+        1
+      );
+      if (getInnerCards(cards[1])) {
+        tl.to(
+          getInnerCards(cards[1]),
+          { y: 12, opacity: 0.8, scale: 0.98, ease: "none", duration: 0.8 },
+          1
+        );
+      }
 
-      // ── TRANSITION 3: Card 2 → Card 3 (t = 2 to 3) ──
-      tl.to(cards[2], {
-        y: -90,
-        scale: 0.95,
-        opacity: 0,
-        ease: "power2.inOut",
-        duration: 1,
-      }, 2)
-        .to(cards[3], {
-          y: 0,
-          height: 330,
-          scale: 1,
+      tl.to(
+        cards[2],
+        {
+          yPercent: 0,
+          scale: ACTIVE_SCALE,
           opacity: 1,
-          zIndex: 40,
-          filter: "brightness(1)",
-          ease: "power2.inOut",
+          ease: "none",
           duration: 1,
-        }, 2);
+        },
+        1
+      );
+      if (getInnerCards(cards[2])) {
+        tl.to(
+          getInnerCards(cards[2]),
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            stagger: 0.05,
+            ease: "none",
+            duration: 0.85,
+          },
+          1.12
+        );
+      }
 
-      // Short buffer so user can read the 4th card before natural unpin
-      tl.to({}, { duration: 0.25 });
+      // ── TRANSITION 3: Card 2 shrinks → Card 3 rises & its inner cards float up ──
+      tl.to(
+        cards[2],
+        {
+          scale: STACKED_SCALE,
+          opacity: 0.92,
+          ease: "none",
+          duration: 1,
+        },
+        2
+      );
+      if (getInnerCards(cards[2])) {
+        tl.to(
+          getInnerCards(cards[2]),
+          { y: 12, opacity: 0.8, scale: 0.98, ease: "none", duration: 0.8 },
+          2
+        );
+      }
+
+      tl.to(
+        cards[3],
+        {
+          yPercent: 0,
+          scale: ACTIVE_SCALE,
+          opacity: 1,
+          ease: "none",
+          duration: 1,
+        },
+        2
+      );
+      if (getInnerCards(cards[3])) {
+        tl.to(
+          getInnerCards(cards[3]),
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            stagger: 0.05,
+            ease: "none",
+            duration: 0.85,
+          },
+          2.12
+        );
+      }
+
+      // Small release buffer
+      tl.to({}, { duration: 0.15 });
     });
 
-    // ── MOBILE ANIMATION (max-width: 767px) ──
+    // ── MOBILE ANIMATION (<768px) ──
     mm.add("(max-width: 767px)", () => {
-      gsap.set(cards[0], { y: 0, height: 300, opacity: 1, zIndex: 40 });
-      gsap.set(cards[1], { y: 308, height: 48, opacity: 0.9, zIndex: 30 });
-      gsap.set(cards[2], { y: 362, height: 48, opacity: 0.82, zIndex: 20 });
-      gsap.set(cards[3], { y: 416, height: 48, opacity: 0.75, zIndex: 10 });
+      const MOBILE_STEP = 22;
+      const ACTIVE_SCALE = 1.02;
+      const STACKED_SCALE = 0.975;
+      const getInnerCards = (card) => card?.querySelectorAll(".bms-service-card");
+
+      gsap.set(cards[0], {
+        y: 0,
+        top: 0,
+        scale: ACTIVE_SCALE,
+        transformOrigin: "center top",
+        zIndex: 1,
+        opacity: 1,
+        force3D: true,
+      });
+
+      cards.slice(1).forEach((card, i) => {
+        gsap.set(card, {
+          yPercent: 110,
+          top: (i + 1) * MOBILE_STEP,
+          scale: STACKED_SCALE,
+          transformOrigin: "center top",
+          zIndex: i + 2,
+          opacity: 0.92,
+          force3D: true,
+        });
+        if (getInnerCards(card)) {
+          gsap.set(getInnerCards(card), { y: 20, opacity: 0.4, force3D: true });
+        }
+      });
 
       const tlMobile = gsap.timeline({
         scrollTrigger: {
-          trigger: section,
-          start: "top 70px",
-          end: "+=1200",
+          trigger: wrapper,
+          start: "top 65px",
+          end: "+=1500",
           pin: true,
-          scrub: 0.5,
-          onUpdate: (self) => {
-            const p = self.progress;
-            let current = 0;
-            if (p >= 0.72) current = 3;
-            else if (p >= 0.38) current = 2;
-            else if (p >= 0.12) current = 1;
-            setActiveIndex(current);
-          },
+          scrub: 0.4,
+          anticipatePin: 1,
+          fastScrollEnd: true,
         },
       });
 
-      timelineRef.current = tlMobile;
+      tlMobile
+        .to(cards[0], { scale: STACKED_SCALE, opacity: 0.92, ease: "none", duration: 1 }, 0)
+        .to(cards[1], { yPercent: 0, scale: ACTIVE_SCALE, opacity: 1, ease: "none", duration: 1 }, 0);
+      if (getInnerCards(cards[1])) {
+        tlMobile.to(getInnerCards(cards[1]), { y: 0, opacity: 1, stagger: 0.04, ease: "none", duration: 0.8 }, 0.1);
+      }
 
       tlMobile
-        .to(cards[0], { y: -80, opacity: 0, duration: 1 }, 0)
-        .to(cards[1], { y: 0, height: 300, opacity: 1, zIndex: 40, duration: 1 }, 0)
-        .to(cards[2], { y: 308, opacity: 0.9, zIndex: 30, duration: 1 }, 0)
-        .to(cards[3], { y: 362, opacity: 0.82, zIndex: 20, duration: 1 }, 0);
+        .to(cards[1], { scale: STACKED_SCALE, opacity: 0.92, ease: "none", duration: 1 }, 1)
+        .to(cards[2], { yPercent: 0, scale: ACTIVE_SCALE, opacity: 1, ease: "none", duration: 1 }, 1);
+      if (getInnerCards(cards[2])) {
+        tlMobile.to(getInnerCards(cards[2]), { y: 0, opacity: 1, stagger: 0.04, ease: "none", duration: 0.8 }, 1.1);
+      }
 
       tlMobile
-        .to(cards[1], { y: -80, opacity: 0, duration: 1 }, 1)
-        .to(cards[2], { y: 0, height: 300, opacity: 1, zIndex: 40, duration: 1 }, 1)
-        .to(cards[3], { y: 308, opacity: 0.9, zIndex: 30, duration: 1 }, 1);
+        .to(cards[2], { scale: STACKED_SCALE, opacity: 0.92, ease: "none", duration: 1 }, 2)
+        .to(cards[3], { yPercent: 0, scale: ACTIVE_SCALE, opacity: 1, ease: "none", duration: 1 }, 2);
+      if (getInnerCards(cards[3])) {
+        tlMobile.to(getInnerCards(cards[3]), { y: 0, opacity: 1, stagger: 0.04, ease: "none", duration: 0.8 }, 2.1);
+      }
 
-      tlMobile
-        .to(cards[2], { y: -80, opacity: 0, duration: 1 }, 2)
-        .to(cards[3], { y: 0, height: 300, opacity: 1, zIndex: 40, duration: 1 }, 2);
+      tlMobile.to({}, { duration: 0.1 });
     });
 
     return () => {
@@ -236,442 +589,332 @@ export default function Products({ openPopup }) {
     };
   }, []);
 
-  // Jump directly to card when clicking indicators
-  const jumpToCard = (targetIndex) => {
-    if (!timelineRef.current || !timelineRef.current.scrollTrigger) return;
-    const st = timelineRef.current.scrollTrigger;
-    const targets = [0, 0.28, 0.58, 0.92];
-    const targetP = targets[targetIndex] || 0;
-    const scrollY = st.start + targetP * (st.end - st.start);
-    window.scrollTo({ top: scrollY, behavior: "smooth" });
-  };
-
   const handleTriggerAccess = () => {
     if (openPopup) openPopup();
     else window.dispatchEvent(new CustomEvent("open-enquiry-popup"));
   };
 
-  const currentProduct = STACK_PRODUCTS[activeIndex] || STACK_PRODUCTS[0];
-
   return (
-    <div className="products-page">
+    <div className="bms-products-page">
       <SEO
         title="Our Products | Modern SaaS Workflow Ecosystem | Brandmingo"
-        description="Explore Brandmingo's suite of modern business products: WorkSensy CRM, BeeShip Logistics, CartSensy Cart Recovery, and Meta AutoPost Scheduler."
+        description="Explore Brandmingo's unified suite of modern business solutions, AI growth tools, and scaling infrastructure."
         canonical="https://brandmingo.com/products"
-        keywords="Brandmingo products, WorkSensy, BeeShip, CartSensy, Meta AutoPost, SaaS software India"
+        keywords="Brandmingo products, unified shipping, AI marketing tools, ecommerce growth"
       />
-      {/* Ambient background glow corresponding to active card's accent */}
-      <div
-        className="prd-ambient-glow prd-ambient-glow--1"
-        style={{
-          background: `radial-gradient(circle, ${currentProduct.color}35 0%, transparent 70%)`,
-        }}
-      />
-      <div className="prd-ambient-glow prd-ambient-glow--2" />
+
+      {/* Ambient background glows */}
+      <div className="bms-ambient-glow bms-ambient-glow--1" />
+      <div className="bms-ambient-glow bms-ambient-glow--2" />
 
       {/* ══ HERO INTRO SECTION ═════════════════════════════════════ */}
-      <section className="prd-hero-intro">
-        <div className="container">
-          <div className="prd-intro-badge">
+      <section className="bms-hero-intro">
+        <div className="bms-container">
+          <div className="bms-intro-badge">
             <i className="fa-solid fa-sparkles" />
             <span>Product Ecosystem</span>
           </div>
-          <h1 className="prd-intro-title">
+          <h1 className="bms-intro-title">
             Engineered for High-Growth{" "}
-            <span className="prd-gradient-text">Modern Businesses</span>
+            <span className="bms-gradient-text">Modern Businesses</span>
           </h1>
-          <p className="prd-intro-desc">
-            A cohesive suite of autonomous tools designed to streamline your social reach,
-            team velocity, client relationships, and automated cash flow.
+          <p className="bms-intro-desc">
+            A cohesive suite of autonomous tools designed to streamline your reach,
+            team velocity, client relationships, and operations.
           </p>
         </div>
       </section>
 
       {/* ═════════════════════════════════════════════════════════════
-          PINNED SCROLL SECTION (GSAP PIN TARGET)
+          PREMIUM SCROLL-DRIVEN LAYERED CARD DECK (SHIPROCKET STYLE)
           ═════════════════════════════════════════════════════════════ */}
-      <section className="prd-pinned-outer" ref={sectionRef}>
-        <div className="prd-pinned-container container">
-          <div className="prd-stack-layout">
-
-            {/* ══ LEFT: 52% WIDTH — 3D LAYERED CARD STACK ═══════════ */}
-            <div className="prd-left-stack-wrapper">
-              <div className="prd-stack-stage">
-                {STACK_PRODUCTS.map((prod, idx) => (
-                  <div
-                    key={prod.id}
-                    ref={(el) => (cardsRef.current[idx] = el)}
-                    className={`prd-stack-card-item ${idx === activeIndex ? "is-active" : ""}`}
-                    onClick={() => jumpToCard(idx)}
-                    style={{
-                      background: `linear-gradient(145deg, ${prod.color}0d 0%, #111219 100%)`,
-                      borderColor: idx === activeIndex ? `${prod.color}77` : `${prod.color}33`,
-                      boxShadow:
-                        idx === activeIndex
-                          ? `0 24px 60px -8px rgba(0,0,0,0.92), 0 0 32px ${prod.color}28`
-                          : `0 14px 35px rgba(0,0,0,0.7), 0 0 16px ${prod.color}15`,
-                    }}
-                  >
-                    {/* Header Bar — Always visible in both peek and expanded states */}
-                    <div className="prd-card-header-bar">
-                      <div className="prd-card-identity">
-                        <div
-                          className="prd-card-icon-bubble"
-                          style={{
-                            background: prod.logo ? "transparent" : prod.gradient,
-                            padding: prod.logo ? "0" : undefined,
-                            overflow: "hidden",
-                          }}
-                        >
-                          {prod.logo ? (
-                            <img src={prod.logo} alt={prod.title} className="prd-card-logo-bubble-img" />
-                          ) : (
-                            <i className={prod.icon} />
-                          )}
-                        </div>
-                        <div>
-                          <div className="prd-card-name">{prod.title}</div>
-                          <div className="prd-card-role">{prod.subtitle}</div>
-                        </div>
+      <section className="bms-deck-section" ref={deckWrapperRef}>
+        <div className="bms-deck-container">
+          <div className="bms-deck-viewport">
+            {DECK_CARDS_DATA.map((card, cIdx) => (
+              <div
+                key={card.id}
+                ref={(el) => (cardsRef.current[cIdx] = el)}
+                className={`bms-deck-panel bms-deck-panel--${cIdx + 1}`}
+                style={{
+                  background: card.bgGradient,
+                }}
+              >
+                {/* ── CARD HEADER: Icon Box & Main Heading + Subtitle ── */}
+                <div className="bms-deck-panel-header">
+                  <div className="bms-deck-title-row">
+                    <div className="bms-deck-title-left">
+                      <div className="bms-deck-icon-box">
+                        {card.logo ? (
+                          <img
+                            src={card.logo}
+                            alt={card.title}
+                            className="bms-deck-logo-img"
+                          />
+                        ) : (
+                          <i className={card.icon} />
+                        )}
                       </div>
-
-                      <div className="prd-card-header-right">
-                        {/* Compact peek preview */}
-                        {prod.id === "worksensy" && (
-                          <span className="prd-peek-mini-preview">💼 ₹320K Rev · 68% Conv</span>
-                        )}
-                        {prod.id === "beeship" && (
-                          <span className="prd-peek-mini-preview">📦 4 Shipments · ₹755 Wallet</span>
-                        )}
-                        {prod.id === "cartsensy" && (
-                          <span className="prd-peek-mini-preview">🛒 35% Recovery · ₹184K Saved</span>
-                        )}
-                        {prod.id === "metaautopost" && (
-                          <span className="prd-peek-mini-preview">📱 3 Accounts · Auto Schedule</span>
-                        )}
-
-                        <div
-                          className="prd-card-pill-tag"
-                          style={{
-                            color: prod.color,
-                            background: `${prod.color}18`,
-                            borderColor: `${prod.color}44`,
-                          }}
+                      <div className="bms-deck-title-col">
+                        <h2
+                          className="bms-deck-main-title"
+                          style={{ color: card.headerTextColor }}
                         >
-                          {prod.badge}
-                        </div>
+                          {card.title}
+                        </h2>
+                        {card.subtitle && (
+                          <p
+                            className="bms-deck-subtitle"
+                            style={{ color: card.headerTextColor }}
+                          >
+                            {card.subtitle}
+                          </p>
+                        )}
                       </div>
                     </div>
 
-                    {/* Inside Mockup Window — Revealed when expanded */}
-                    <div className="prd-card-mockup-body">
-                      {prod.image ? (
-                        <div className="prd-card-image-container">
-                          <img
-                            src={prod.image}
-                            alt={prod.title}
-                            className="prd-card-real-mockup-img"
-                            loading="eager"
-                          />
-                          <div className="prd-card-image-overlay" />
-                        </div>
-                      ) : (
-                        <>
-                          {/* Sidebar navigation */}
-                          <div className="prd-mockup-aside">
-                        {prod.mockup.sidebarMenu.slice(0, 5).map((item, sIdx) => (
-                          <div
-                            key={sIdx}
-                            className={`prd-aside-tab ${sIdx === 0 ? "active" : ""}`}
-                            style={
-                              sIdx === 0
-                                ? { background: `${prod.color}22`, color: prod.color }
-                                : {}
-                            }
-                          >
-                            <i className="fa-solid fa-circle" style={{ fontSize: "4px" }} />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Main Dashboard Preview Content */}
-                      <div className="prd-mockup-main">
-                        <div className="prd-view-heading-row">
-                          <div>
-                            <div className="prd-view-greeting">{prod.mockup.userGreeting}</div>
-                            <div className="prd-view-sub">{prod.mockup.userSub}</div>
-                          </div>
-                          <span className="prd-view-filter-badge">This Month ▾</span>
-                        </div>
-
-                        {/* Top 3 KPI Stats */}
-                        <div className="prd-mockup-stat-strip">
-                          {prod.mockup.stats.map((st, stIdx) => (
-                            <div key={stIdx} className="prd-stat-box">
-                              <div
-                                className="prd-stat-icon-dot"
-                                style={{ background: `${st.color}22`, color: st.color }}
-                              >
-                                <i className={st.icon} />
-                              </div>
-                              <div>
-                                <div className="prd-stat-number">{st.val}</div>
-                                <div className="prd-stat-text">{st.label}</div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Specific Interactive View depending on Product */}
-                        <div className="prd-mockup-preview-area">
-                          <div className="prd-area-header">
-                            <span className="prd-area-label">{prod.mockup.chartTitle}</span>
-                            <span
-                              className="prd-area-badge"
-                              style={{ background: `${prod.color}22`, color: prod.color }}
-                            >
-                              {prod.mockup.chartPill}
-                            </span>
-                          </div>
-
-                          {/* 1. BrandPilot: Bar Chart */}
-                          {prod.id === "brandpilot" && (
-                            <div className="prd-bars-flex">
-                              {prod.mockup.chartBars.map((h, bIdx) => (
-                                <div key={bIdx} className="prd-bar-pillar">
-                                  <div
-                                    className="prd-bar-fill-elem"
-                                    style={{
-                                      height: `${h}%`,
-                                      background:
-                                        bIdx === prod.mockup.chartBars.length - 1
-                                          ? prod.color
-                                          : "rgba(255,255,255,0.14)",
-                                    }}
-                                  />
-                                  <span className="prd-bar-month">
-                                    {["Jan", "Feb", "Mar", "Apr", "May", "Jun"][bIdx]}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-
-                          {/* 2. BeeShip: Courier Performance */}
-                          {prod.id === "beeship" && (
-                            <div className="prd-task-list-view">
-                              <div className="prd-task-row">
-                                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                  <i className="fa-solid fa-truck" style={{ color: prod.color }} />
-                                  <span>Bluedart Surface Express</span>
-                                </div>
-                                <span className="prd-task-tag" style={{ background: "rgba(14, 165, 233, 0.15)", color: "#38bdf8" }}>In Transit</span>
-                              </div>
-                              <div className="prd-task-row">
-                                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                  <i className="fa-solid fa-plane-departure" style={{ color: prod.color }} />
-                                  <span>Delhivery Air Priority</span>
-                                </div>
-                                <span className="prd-task-tag" style={{ background: "rgba(16, 185, 129, 0.15)", color: "#34d399" }}>Delivered</span>
-                              </div>
-                            </div>
-                          )}
-
-                          {/* 3. CartSensy: Recovery Leads */}
-                          {prod.id === "cartsensy" && (
-                            <div className="prd-client-list-view">
-                              {prod.mockup.clients.map((c, cIdx) => (
-                                <div key={cIdx} className="prd-client-row">
-                                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                    <div
-                                      className="prd-client-avatar"
-                                      style={{ background: c.color }}
-                                    >
-                                      {c.initial}
-                                    </div>
-                                    <span className="prd-client-info">{c.name}</span>
-                                  </div>
-                                  <span
-                                    className="prd-client-badge"
-                                    style={{
-                                      background: `${c.color}20`,
-                                      color: c.color,
-                                    }}
-                                  >
-                                    {c.status}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-
-                          {/* 4. Meta AutoPost: Post Status List */}
-                          {prod.id === "metaautopost" && (
-                            <div className="prd-invoice-list-view">
-                              {prod.mockup.invoices.map((inv, iIdx) => (
-                                <div key={iIdx} className="prd-invoice-row">
-                                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                    <i className="fa-regular fa-file-lines" style={{ color: prod.color }} />
-                                    <span style={{ color: "#fff", fontWeight: 600 }}>{inv.client}</span>
-                                  </div>
-                                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                                    <span style={{ color: "#fff", fontWeight: 700 }}>{inv.amount}</span>
-                                    <span
-                                      style={{
-                                        fontSize: "9px",
-                                        padding: "2px 7px",
-                                        borderRadius: "999px",
-                                        background: `${inv.color}20`,
-                                        color: inv.color,
-                                        fontWeight: 700,
-                                      }}
-                                    >
-                                      {inv.status}
-                                    </span>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-                ))}
-              </div>
-            </div>
-
-            {/* ══ RIGHT: 48% WIDTH — DETAILED PRODUCT INFORMATION ══ */}
-            <div className="prd-right-info-wrapper">
-              <div className="prd-details-card">
-                {/* Top Stepper Indicator */}
-                <div className="prd-details-top-bar">
-                  <span
-                    className="prd-category-pill"
-                    style={{
-                      color: currentProduct.color,
-                      borderColor: `${currentProduct.color}44`,
-                      background: `${currentProduct.color}15`,
-                    }}
-                  >
-                    {currentProduct.tagline}
-                  </span>
-
-                  <div className="prd-stepper-dots">
-                    {STACK_PRODUCTS.map((p, dotIdx) => (
-                      <button
-                        key={dotIdx}
-                        type="button"
-                        className={`prd-step-dot ${dotIdx === activeIndex ? "active" : ""}`}
-                        style={{
-                          background: dotIdx === activeIndex ? p.color : "rgba(255,255,255,0.12)",
-                        }}
-                        onClick={() => jumpToCard(dotIdx)}
-                        aria-label={`Jump to ${p.title}`}
-                      />
-                    ))}
+                    {card.websiteUrl && (
+                      <a
+                        href={card.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bms-deck-website-btn"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Visit Website</span>
+                        <i className="fa-solid fa-arrow-up-right-from-square" />
+                      </a>
+                    )}
                   </div>
                 </div>
 
-                {/* Animated Body: Clean, dedicated container with ZERO overlapping text */}
-                <div key={currentProduct.id} className="prd-details-animated-body">
-                  {/* Product Headline */}
-                  <div className="prd-details-headline">
-                    <div
-                      className="prd-details-icon-large"
-                      style={{
-                        background: currentProduct.logo ? "transparent" : currentProduct.gradient,
-                        padding: currentProduct.logo ? "0" : undefined,
-                        overflow: "hidden",
+                {/* ── INNER 4 SERVICE CARDS (CLICKABLE) ── */}
+                <div className="bms-services-row">
+                  {card.services.map((srv) => (
+                    <a
+                      key={srv.id}
+                      href={srv.link}
+                      className="bms-service-card"
+                      onClick={(e) => {
+                        if (srv.link === "#") {
+                          e.preventDefault();
+                          handleTriggerAccess();
+                        }
                       }}
                     >
-                      {currentProduct.logo ? (
-                        <img src={currentProduct.logo} alt={currentProduct.title} className="prd-details-logo-img" />
-                      ) : (
-                        <i className={currentProduct.icon} />
-                      )}
-                    </div>
-                    <div>
-                      <h2 className="prd-details-title">{currentProduct.title}</h2>
-                      <div
-                        className="prd-details-subtitle"
-                        style={{ color: currentProduct.color }}
-                      >
-                        {currentProduct.subtitle}
-                      </div>
-                    </div>
-                  </div>
+                      {/* Visual Graphic Area */}
+                      <div className="bms-service-visual">
+                        {srv.image ? (
+                          <div className="bms-service-real-img-wrap">
+                            <div className="bms-browser-bar">
+                              <span className="bms-browser-dot bms-dot-red" />
+                              <span className="bms-browser-dot bms-dot-yellow" />
+                              <span className="bms-browser-dot bms-dot-green" />
+                              <span className="bms-browser-url-mock">
+                                {card.id === "worksensy"
+                                  ? "app.worksensy.com"
+                                  : card.id === "beeship"
+                                  ? "app.beeship.in"
+                                  : card.id === "cartsensy"
+                                  ? "app.cartsensy.io"
+                                  : "app.platform.io"}
+                              </span>
+                            </div>
+                            <div className="bms-real-img-viewport">
+                              <img
+                                src={srv.image}
+                                alt={srv.title}
+                                className={`bms-service-real-img ${srv.imageCenter ? "bms-img-center" : ""}`}
+                                loading="lazy"
+                              />
+                              <div className="bms-service-img-overlay" />
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="bms-service-mock-graphic">
+                            <div className="bms-mock-illustration-slot">
+                            {srv.visualType === "shipping" && (
+                              <div className="bms-mock-shipping-card">
+                                <div className="bms-mock-date">
+                                  <span>Estimated Delivery</span>
+                                  <strong>24 hrs Express</strong>
+                                </div>
+                                <div className="bms-mock-box-3d">
+                                  <i className="fa-solid fa-box-open" />
+                                </div>
+                              </div>
+                            )}
 
-                  {/* 2-3 line description */}
-                  <p className="prd-details-desc">{currentProduct.desc}</p>
+                            {srv.visualType === "quick" && (
+                              <div className="bms-mock-map-card">
+                                <div className="bms-mock-pulse-dot" />
+                                <span className="bms-mock-route-tag">
+                                  <i className="fa-solid fa-route" /> 15 Mins
+                                </span>
+                              </div>
+                            )}
 
-                  {/* 3-4 Key Features with Icons */}
-                  <div className="prd-features-checklist">
-                    {currentProduct.features.map((feat, fIdx) => (
-                      <div key={fIdx} className="prd-feature-check-item">
-                        <div
-                          className="prd-check-icon"
-                          style={{ background: `${currentProduct.color}22`, color: currentProduct.color }}
-                        >
-                          <i className="fa-solid fa-check" />
+                            {srv.visualType === "cargo" && (
+                              <div className="bms-mock-cargo-card">
+                                <i className="fa-solid fa-truck-moving" />
+                                <span>Multi-Modal B2B</span>
+                              </div>
+                            )}
+
+                            {srv.visualType === "fulfillment" && (
+                              <div className="bms-mock-store-pills">
+                                <span className="bms-pill-badge bms-pill-shopify">
+                                  <i className="fa-brands fa-shopify" />
+                                </span>
+                                <span className="bms-pill-badge bms-pill-woo">
+                                  <i className="fa-brands fa-wordpress" />
+                                </span>
+                                <span className="bms-pill-badge bms-pill-amazon">
+                                  <i className="fa-brands fa-amazon" />
+                                </span>
+                              </div>
+                            )}
+
+                            {srv.visualType === "global" && (
+                              <div className="bms-mock-globe-card">
+                                <i className="fa-solid fa-earth-americas" />
+                                <span>Global Direct</span>
+                              </div>
+                            )}
+
+                            {srv.visualType === "customs" && (
+                              <div className="bms-mock-doc-card">
+                                <i className="fa-solid fa-stamp" />
+                                <span>Auto IOSS Cleared</span>
+                              </div>
+                            )}
+
+                            {srv.visualType === "currency" && (
+                              <div className="bms-mock-currency-card">
+                                <span className="bms-currency-chip">$ USD</span>
+                                <span className="bms-currency-chip">€ EUR</span>
+                                <span className="bms-currency-chip">₹ INR</span>
+                              </div>
+                            )}
+
+                            {srv.visualType === "channels" && (
+                              <div className="bms-mock-sync-card">
+                                <i className="fa-solid fa-arrows-rotate fa-spin" />
+                                <span>Live Cloud Sync</span>
+                              </div>
+                            )}
+
+                            {srv.visualType === "checkout" && (
+                              <div className="bms-mock-checkout-card">
+                                <span className="bms-fast-pill">⚡ 1-Click</span>
+                                <div className="bms-mock-address-bar" />
+                              </div>
+                            )}
+
+                            {srv.visualType === "whatsapp" && (
+                              <div className="bms-mock-chat-bubble">
+                                <i className="fa-brands fa-whatsapp" />
+                                <span>Order Confirmed! 🎉</span>
+                              </div>
+                            )}
+
+                            {srv.visualType === "fraud" && (
+                              <div className="bms-mock-shield-card">
+                                <i className="fa-solid fa-shield-halved" />
+                                <span>Zero Fraud Score</span>
+                              </div>
+                            )}
+
+                            {srv.visualType === "trends" && (
+                              <div className="bms-mock-bar-chart">
+                                <span style={{ height: "45%" }} />
+                                <span style={{ height: "70%" }} />
+                                <span style={{ height: "95%" }} />
+                                <span style={{ height: "60%" }} />
+                              </div>
+                            )}
+
+                            {srv.visualType === "capital" && (
+                              <div className="bms-mock-capital-card">
+                                <i className="fa-solid fa-arrow-trend-up" />
+                                <span>Instant Limit</span>
+                              </div>
+                            )}
+
+                            {srv.visualType === "returns" && (
+                              <div className="bms-mock-return-card">
+                                <i className="fa-solid fa-rotate-left" />
+                                <span>Instant Refund</span>
+                              </div>
+                            )}
+
+                            {srv.visualType === "api" && (
+                              <div className="bms-mock-code-card">
+                                <code>&lt;200 OK API/&gt;</code>
+                              </div>
+                            )}
+
+                            {srv.visualType === "support" && (
+                              <div className="bms-mock-support-card">
+                                <i className="fa-solid fa-headset" />
+                                <span>&lt;1m Response</span>
+                              </div>
+                            )}
+                          </div>
                         </div>
-                        <span>{feat}</span>
+                        )}
                       </div>
-                    ))}
-                  </div>
 
-                  {/* Small Supporting Statistic / Benefit */}
-                  <div className="prd-stat-benefit-badge">
-                    <i
-                      className={currentProduct.stat.icon}
-                      style={{ color: currentProduct.color, fontSize: "18px" }}
-                    />
-                    <div>
-                      <span
-                        className="prd-benefit-number"
-                        style={{ color: currentProduct.color }}
-                      >
-                        {currentProduct.stat.val}
-                      </span>{" "}
-                      <span className="prd-benefit-text">{currentProduct.stat.label}</span>
-                    </div>
-                  </div>
+                      {/* Content Area */}
+                      <div className="bms-service-content">
+                        <div className="bms-service-header-row">
+                          <div className="bms-service-title-flex">
+                            <span
+                              className="bms-service-icon"
+                              style={{ color: srv.iconColor }}
+                            >
+                              <i className={srv.icon} />
+                            </span>
+                            <h3 className="bms-service-name">{srv.title}</h3>
+                          </div>
+                          <span className="bms-service-arrow-btn">
+                            <i className="fa-solid fa-arrow-up-right-from-square" />
+                          </span>
+                        </div>
+                        <p className="bms-service-desc">{srv.desc}</p>
 
-                  {/* CTA Buttons */}
-                  <div className="prd-action-buttons-row">
-                    <button
-                      type="button"
-                      className="prd-btn-primary-cta"
-                      onClick={handleTriggerAccess}
-                    >
-                      <span>Get Early Access</span>
-                      <i className="fa-solid fa-arrow-right" />
-                    </button>
-                    <button
-                      type="button"
-                      className="prd-btn-secondary-demo"
-                      onClick={() => setVideoModalOpen(true)}
-                    >
-                      <i className="fa-regular fa-circle-play" />
-                      <span>Watch Demo</span>
-                    </button>
-                  </div>
+                        {/* Point-wise feature bullet list */}
+                        {srv.points && srv.points.length > 0 && (
+                          <ul className="bms-service-points">
+                            {srv.points.map((pt, pIdx) => (
+                              <li key={pIdx} className="bms-point-item">
+                                <span className="bms-point-bullet">
+                                  <i className="fa-solid fa-check" />
+                                </span>
+                                <span className="bms-point-text">{pt}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+
+                        {/* Bottom explore footer */}
+                        <div className="bms-service-footer">
+                          <span className="bms-service-explore-text">Explore feature</span>
+                          <i className="fa-solid fa-arrow-right bms-service-explore-icon" />
+                        </div>
+                      </div>
+                    </a>
+                  ))}
                 </div>
               </div>
-            </div>
-
+            ))}
           </div>
         </div>
       </section>
 
-
       {/* ══ FAQ SECTION ════════════════════════════════════════════ */}
       <section className="prd-faq-section">
-        <div className="container">
+        <div className="bms-container">
           <div className="prd-section-head">
             <span className="prd-section-badge">Frequently Asked Questions</span>
             <h2 className="prd-section-title">Everything You Need to Know</h2>
@@ -704,7 +947,7 @@ export default function Products({ openPopup }) {
 
       {/* ══ CALL TO ACTION ═════════════════════════════════════════ */}
       <section className="prd-cta-section">
-        <div className="container">
+        <div className="bms-container">
           <div className="prd-cta-card">
             <h2 className="prd-cta-title">Ready to Power Up Your Digital Workflow?</h2>
             <p className="prd-cta-desc">
@@ -728,115 +971,6 @@ export default function Products({ openPopup }) {
           </div>
         </div>
       </section>
-
-      {/* ══ DEMO VIDEO MODAL ═══════════════════════════════════════ */}
-      {videoModalOpen && (
-        <div className="prd-modal-backdrop" onClick={() => setVideoModalOpen(false)}>
-          <div className="prd-modal-container" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className="prd-modal-close"
-              onClick={() => setVideoModalOpen(false)}
-              aria-label="Close"
-            >
-              ✕
-            </button>
-
-            <div style={{ textAlign: "center", padding: "8px 0 16px" }}>
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "56px",
-                  height: "56px",
-                  borderRadius: "16px",
-                  background: currentProduct.logo ? "transparent" : currentProduct.gradient,
-                  color: "#ffffff",
-                  fontSize: "24px",
-                  marginBottom: "16px",
-                  overflow: "hidden",
-                }}
-              >
-                {currentProduct.logo ? (
-                  <img
-                    src={currentProduct.logo}
-                    alt={currentProduct.title}
-                    style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "16px" }}
-                  />
-                ) : (
-                  <i className={currentProduct.icon} />
-                )}
-              </div>
-              <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#fff", margin: "0 0 6px" }}>
-                {currentProduct.title} — Live Walkthrough
-              </h3>
-              <p
-                style={{
-                  fontSize: "13.5px",
-                  color: "rgba(255,255,255,0.6)",
-                  maxWidth: "440px",
-                  margin: "0 auto 20px",
-                }}
-              >
-                A dedicated specialist will demo {currentProduct.title} live, tuned to your business use cases.
-              </p>
-
-              <div
-                style={{
-                  borderRadius: "16px",
-                  border: "1px solid rgba(255,255,255,0.09)",
-                  background: "#0a0a0f",
-                  padding: "36px 20px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "12px",
-                }}
-              >
-                <div
-                  style={{
-                    width: "58px",
-                    height: "58px",
-                    borderRadius: "50%",
-                    background: "rgba(255,107,30,0.18)",
-                    border: "2px solid #ff6b1e",
-                    color: "#ff8843",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "21px",
-                    cursor: "pointer",
-                  }}
-                  onClick={handleTriggerAccess}
-                >
-                  <i className="fa-solid fa-play" style={{ marginLeft: "4px" }} />
-                </div>
-                <div style={{ fontSize: "14px", fontWeight: 600, color: "#fff" }}>
-                  Schedule Guided Demo
-                </div>
-                <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", maxWidth: "360px" }}>
-                  We'll prepare a live interactive sandbox environment for your team.
-                </div>
-              </div>
-
-              <div style={{ marginTop: "24px", display: "flex", justifyContent: "center" }}>
-                <button
-                  type="button"
-                  className="prd-btn-primary-cta"
-                  onClick={() => {
-                    setVideoModalOpen(false);
-                    handleTriggerAccess();
-                  }}
-                >
-                  <span>Book Guided Demo</span>
-                  <i className="fa-solid fa-calendar-check" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

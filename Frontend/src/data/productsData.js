@@ -2,7 +2,9 @@
    Products Data for Brandmingo Stack Showcase & Catalog
    ==================================================================== */
 
-export const STACK_PRODUCTS = [
+export const STACK_PRODUCTS = [];
+
+export const PREVIOUS_STACK_PRODUCTS = [
   {
     id: "worksensy",
     num: "01",
