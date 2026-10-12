@@ -37,7 +37,7 @@ const AboutAwardSection = () => {
             <div className="col-xl-4">
               <div
                 className="text"
-                style={{ color: "rgba(255, 255, 255, 0.45)" }}
+                style={{ color: "rgba(255, 255, 255, 0.78)" }}
               >
                 At Brandmingo, our journey is built on continuous learning,
                 creativity, and helping brands grow in the digital space. Every

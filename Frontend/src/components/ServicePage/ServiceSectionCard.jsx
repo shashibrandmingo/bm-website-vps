@@ -172,7 +172,7 @@ const CSS = `
     position: relative; z-index: 1;
   }
   .ssc-desc {
-    font-size: 13.5px; color: rgba(255,255,255,0.42);
+    font-size: 13.5px; color: rgba(255,255,255,0.78);
     line-height: 1.72; margin-bottom: 28px;
     position: relative; z-index: 1;
   }

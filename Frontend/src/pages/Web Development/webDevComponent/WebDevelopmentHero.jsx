@@ -98,8 +98,8 @@ const WebDevelopmentHero = ({ openPopup }) => {
         }
 
         .wd-description {
-          color: var(--text-color);
-          opacity: 0.7;
+          color: rgba(255, 255, 255, 0.78);
+          opacity: 1;
           max-width: 520px;
           margin-bottom: 42px;
           font-size: var(--body-font-size);
@@ -289,7 +289,7 @@ const WebDevelopmentHero = ({ openPopup }) => {
 
         .wd-url-text {
           font-size: 10px;
-          color: rgba(255,255,255,0.3);
+          color: rgba(255,255,255,0.78);
           font-family: monospace;
         }
 
@@ -319,7 +319,7 @@ const WebDevelopmentHero = ({ openPopup }) => {
 
         .wd-mock-nav-links li {
           font-size: 10px;
-          color: rgba(255,255,255,0.45);
+          color: rgba(255,255,255,0.78);
         }
 
         .wd-mock-cta-small {
@@ -362,7 +362,7 @@ const WebDevelopmentHero = ({ openPopup }) => {
 
         .wd-mock-sub {
           font-size: 10px;
-          color: rgba(255,255,255,0.4);
+          color: rgba(255,255,255,0.78);
           margin-bottom: 18px;
           max-width: 200px;
           line-height: 1.5;
@@ -406,7 +406,7 @@ const WebDevelopmentHero = ({ openPopup }) => {
 
         .wd-mock-stat-lbl {
           font-size: 8.5px;
-          color: rgba(255,255,255,0.35);
+          color: rgba(255,255,255,0.78);
           line-height: 1.3;
         }
 
@@ -475,7 +475,7 @@ const WebDevelopmentHero = ({ openPopup }) => {
 
         .wd-phone-sub {
           font-size: 8px;
-          color: rgba(255,255,255,0.38);
+          color: rgba(255,255,255,0.78);
           line-height: 1.5;
           margin-bottom: 12px;
         }
@@ -542,7 +542,8 @@ const WebDevelopmentHero = ({ openPopup }) => {
 
         .wd-feat-item p {
           font-size: 12px;
-          opacity: 0.6;
+          color: rgba(255, 255, 255, 0.78);
+          opacity: 1;
           margin: 0;
         }
 

@@ -271,7 +271,7 @@
 .ap-card-desc {
   font-family: var(--body-font-family, inherit);
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.65;
   margin: 0;
 }

@@ -91,7 +91,7 @@ const GrowthCtaBanner = () => {
           font-weight: 700;
           letter-spacing: 2.5px;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.75);
+          color: rgba(255,255,255,0.78);
           margin-bottom: 20px;
         }
 
@@ -119,7 +119,7 @@ const GrowthCtaBanner = () => {
         .cta-subtext {
           font-family: var(--body-font-family);
           font-size: var(--body-font-size);
-          color: rgba(255,255,255,0.75);
+          color: rgba(255,255,255,0.78);
           line-height: var(--body-line-height);
           margin-bottom: 38px;
           max-width: 520px;
@@ -171,7 +171,7 @@ const GrowthCtaBanner = () => {
           font-family: var(--heading-font-family);
           font-size: 14px;
           font-weight: 600;
-          color: rgba(255,255,255,0.85);
+          color: rgba(255,255,255,0.78);
           text-decoration: none;
           display: inline-flex;
           align-items: center;
@@ -244,7 +244,7 @@ const GrowthCtaBanner = () => {
         .badge-info .lbl {
           font-family: var(--body-font-family);
           font-size: 11.5px;
-          color: rgba(255,255,255,0.65);
+          color: rgba(255,255,255,0.78);
           text-transform: uppercase;
           letter-spacing: 1px;
           margin-top: 4px;

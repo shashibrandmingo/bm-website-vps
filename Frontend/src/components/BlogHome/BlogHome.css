@@ -307,7 +307,7 @@
 .bh-badge-month {
   font-size: 7px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.78);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -736,7 +736,7 @@
 }
 .bh-stat-label {
   font-size: 9px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
   white-space: nowrap;
 }
 

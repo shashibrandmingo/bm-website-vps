@@ -235,8 +235,8 @@ const CSS = `
     font-family: var(--body-font-family, 'Mont', sans-serif);
     font-size: 15px;
     font-weight: var(--body-font-weight, 400);
-    color: var(--text-color, #fff);
-    opacity: 0.5;
+    color: rgba(255, 255, 255, 0.78);
+    opacity: 1;
     line-height: var(--body-line-height, 1.9);
     max-width: 440px;
     margin-bottom: 36px;
@@ -260,7 +260,7 @@ const CSS = `
     font-family: var(--body-font-family, 'Mont', sans-serif);
     font-size: 13px;
     font-weight: 500;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.78);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -269,7 +269,7 @@ const CSS = `
     display: flex;
     align-items: center;
     gap: 7px;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.78);
     text-decoration: none;
     padding: 7px 14px;
     border-radius: 30px;
@@ -393,7 +393,7 @@ const CSS = `
   .sph-fcard__sub {
     font-family: var(--body-font-family, 'Mont', sans-serif);
     font-size: 10.5px;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.78);
     white-space: nowrap;
   }
   .sph-fcard__dot {
@@ -425,7 +425,7 @@ const CSS = `
   .sph-stat__lbl {
     font-family: var(--body-font-family, 'Mont', sans-serif);
     font-size: 10px; font-weight: 500;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.78);
     text-transform: uppercase; letter-spacing: 1.5px;
     white-space: nowrap;
   }

@@ -135,7 +135,7 @@
   --h4-font-weight: 600;
   --h5-font-weight: 600;
   --h6-font-weight: 700;
-  --sec-title-subtitle-color: #7e8596;
+  --sec-title-subtitle-color: rgba(255, 255, 255, 0.78);
   --sec-title-subtitle-font-size: 16px;
   --sec-title-subtitle-font-weight: 500;
   --sec-title-subtitle-line-height: 1;
@@ -3588,7 +3588,7 @@ li {
   font-weight: 400;
   line-height: 1;
   position: relative;
-  color: #7a7a7a;
+  color: rgba(255, 255, 255, 0.78);
   font-family: var(--body-font-family);
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -3896,7 +3896,7 @@ li {
 }
 .hero-1 .hero-content .content-items .content .hero-text {
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.78);
   margin-bottom: 30px;
 }
 @media (max-width: 767.98px) {
@@ -4086,7 +4086,7 @@ li {
 }
 .hero-2 .hero-content .content .hero-text {
   max-width: 440px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.78);
   margin-bottom: 37px;
 }
 @media (max-width: 767.98px) {
@@ -4442,7 +4442,7 @@ li {
   line-height: 40px;
   text-align: center;
   border-radius: 50%;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
 }
 .hero-4 .hero-content .hero-items .content .social-icon a:hover {
   background-color: var(--theme-color1);
@@ -5316,7 +5316,7 @@ li {
 }
 .about-items-3 .about-content-3 .text {
   max-width: 310px;
-  color: #999999;
+  color: rgba(255, 255, 255, 0.78);
 }
 .about-items-3 .about-content-3 .about-list {
   margin-top: 40px;
@@ -6711,7 +6711,7 @@ li {
   width: 100%;
 }
 .working-block-one .inner-block .content-box .text {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
   margin-top: 10px;
   max-width: 450px;
   font-size: 16px;
@@ -7527,7 +7527,7 @@ li {
   margin-top: 10px;
 }
 .project-block .inner-block .content-block ul li {
-  color: #7a7a7a;
+  color: rgba(255, 255, 255, 0.78);
 }
 .project-block .inner-block .content-block ul .dot {
   width: 5px;
@@ -8389,7 +8389,7 @@ li {
 .foorer-area .footer-widget-wrapper .footer-content .form-group input {
   background: var(--theme-color2);
   border-radius: 40px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
   display: block;
   font-size: 14px;
   height: 65px;
@@ -8403,35 +8403,35 @@ li {
   .footer-content
   .form-group
   input::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
 }
 .foorer-area
   .footer-widget-wrapper
   .footer-content
   .form-group
   input::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
 }
 .foorer-area
   .footer-widget-wrapper
   .footer-content
   .form-group
   input:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
 }
 .foorer-area
   .footer-widget-wrapper
   .footer-content
   .form-group
   input::-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
 }
 .foorer-area
   .footer-widget-wrapper
   .footer-content
   .form-group
   input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
 }
 .foorer-area .footer-widget-wrapper .footer-content .form-group .circle-btn {
   background-color: var(--theme-color1);
@@ -9416,7 +9416,7 @@ body {
   margin-top: 50px;
 }
 .project-details__content .text {
-  color: #8f8c94;
+  color: rgba(255, 255, 255, 0.78);
 }
 @media (max-width: 1199.98px) {
   .project-details__content .project-title-big-title {
@@ -9451,7 +9451,7 @@ body {
   }
 }
 .project-details__content .feature-list ul li {
-  color: #8f8c94;
+  color: rgba(255, 255, 255, 0.78);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9561,7 +9561,7 @@ body {
 }
 .blog-details__meta li a {
   font-size: 15px;
-  color: #777;
+  color: rgba(255, 255, 255, 0.78);
   font-weight: 500;
   -webkit-transition: all 300ms ease;
   transition: all 300ms ease;
@@ -10362,7 +10362,7 @@ body {
 .tech-tab-btn {
   background: var(--bg-color);
   border: 1px solid var(--border-color2-rgba);
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
   padding: 10px 22px;
   border-radius: 100px;
   font-size: 14px;
@@ -10741,7 +10741,7 @@ body {
 }
 
 /* .ps-ldsc {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
   font-family: var(--body-font-family);
   font-size: 12px;
   line-height: 1.6;
@@ -11103,7 +11103,7 @@ body {
   border: 1px solid var(--border-color2-rgba);
   border-radius: 14px;
   padding: 18px 20px;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.78);
   text-align: left;
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -11400,7 +11400,7 @@ body {
     font-family: var(--body-font-family);
     font-size: var(--body-font-size);
     font-weight: var(--body-font-weight);
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.78);
     line-height: 1.8;
     opacity: 1;
     margin-bottom: 18px;
@@ -11610,7 +11610,7 @@ body {
 }
 
 .pp-popular .pp-price-wrap {
-  border-bottom-color: rgba(255, 255, 255, 0.2);
+  border-bottom-color: rgba(255, 255, 255, 0.78);
 }
 
 .pp-price {
@@ -12016,7 +12016,7 @@ body {
 }
 
 .wcb-card-highlight .wcb-stat-value span {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .wcb-card-highlight::before {
@@ -13486,7 +13486,7 @@ body {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.78);
   font-weight: var(--h6-font-weight);
 }
 
@@ -13515,7 +13515,7 @@ body {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.92);
-  z-index: 10000;
+  z-index: 999999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13975,7 +13975,7 @@ body {
 .rdh-desc {
   font-family: var(--body-font-family);
   font-size: 17px;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.9;
   max-width: 520px;
   margin: 0 0 42px;
@@ -14028,7 +14028,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
   font-family: var(--heading-font-family);
   font-size: 14px;
   font-weight: 600;
@@ -15246,7 +15246,7 @@ body {
   font-family: var(--body-font-family);
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.8;
   letter-spacing: 0.2px;
   flex: 1;

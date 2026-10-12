@@ -94,8 +94,8 @@ const BrandIdentityHero = () => {
         .wd-title-accent { color: var(--theme-color1); }
 
         .wd-description {
-          color: var(--text-color);
-          opacity: 0.7;
+          color: rgba(255, 255, 255, 0.78);
+          opacity: 1;
           max-width: 520px;
           margin-bottom: 42px;
           font-size: var(--body-font-size);
@@ -288,7 +288,7 @@ const BrandIdentityHero = () => {
 
         .wd-url-text {
           font-size: 10px;
-          color: rgba(255,255,255,0.3);
+          color: rgba(255,255,255,0.78);
           font-family: monospace;
         }
 
@@ -318,7 +318,7 @@ const BrandIdentityHero = () => {
 
         .wd-mock-nav-links li {
           font-size: 10px;
-          color: rgba(255,255,255,0.45);
+          color: rgba(255,255,255,0.78);
         }
 
         .wd-mock-cta-small {
@@ -399,7 +399,7 @@ const BrandIdentityHero = () => {
 
         .wd-kpi-label {
           font-size: 8px;
-          color: rgba(255,255,255,0.4);
+          color: rgba(255,255,255,0.78);
           margin-bottom: 3px;
           display: flex;
           align-items: center;
@@ -446,7 +446,7 @@ const BrandIdentityHero = () => {
 
         .wd-ch-name {
           font-size: 9px;
-          color: rgba(255,255,255,0.55);
+          color: rgba(255,255,255,0.78);
           width: 88px;
           flex-shrink: 0;
           white-space: nowrap;
@@ -471,7 +471,7 @@ const BrandIdentityHero = () => {
         .wd-ch-val {
           font-size: 9px;
           font-weight: 700;
-          color: rgba(255,255,255,0.75);
+          color: rgba(255,255,255,0.78);
           width: 40px;
           text-align: right;
           flex-shrink: 0;
@@ -496,7 +496,7 @@ const BrandIdentityHero = () => {
 
         .wd-mock-stat-lbl {
           font-size: 8.5px;
-          color: rgba(255,255,255,0.35);
+          color: rgba(255,255,255,0.78);
           line-height: 1.3;
         }
 
@@ -557,7 +557,7 @@ const BrandIdentityHero = () => {
         .wd-phone-widget-label {
           font-size: 7.5px;
           font-weight: 700;
-          color: rgba(255,255,255,0.4);
+          color: rgba(255,255,255,0.78);
           text-transform: uppercase;
           letter-spacing: 0.8px;
           margin-bottom: 6px;
@@ -575,7 +575,7 @@ const BrandIdentityHero = () => {
 
         .wd-phone-lead-sub {
           font-size: 8px;
-          color: rgba(255,255,255,0.38);
+          color: rgba(255,255,255,0.78);
           margin-bottom: 10px;
           line-height: 1.4;
         }
@@ -603,7 +603,7 @@ const BrandIdentityHero = () => {
 
         .wd-phone-ch-name {
           font-size: 8px;
-          color: rgba(255,255,255,0.55);
+          color: rgba(255,255,255,0.78);
           flex: 1;
           white-space: nowrap;
           overflow: hidden;
@@ -665,7 +665,7 @@ const BrandIdentityHero = () => {
         }
 
         .wd-feat-item h4 { font-size: 14px; font-weight: 600; margin: 0; }
-        .wd-feat-item p  { font-size: 12px; opacity: 0.6; margin: 0; }
+        .wd-feat-item p  { font-size: 12px; color: rgba(255, 255, 255, 0.78); opacity: 1; margin: 0; }
 
         .wd-feat-item > div:last-child { display: flex; flex-direction: column; }
 

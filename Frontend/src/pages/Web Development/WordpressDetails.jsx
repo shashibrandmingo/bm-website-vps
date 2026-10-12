@@ -378,7 +378,7 @@ const WordpressDetails = () => {
 
     .code-blue   { color: #79b8ff; }
     .code-orange { color: var(--theme-color1, #ff6b1e); }
-    .code-white  { color: rgba(255,255,255,0.8); }
+    .code-white  { color: rgba(255,255,255,0.78); }
     .code-line   { margin: 0 !important; }
 
     /* ── Back Glow ── */

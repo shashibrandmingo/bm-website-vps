@@ -286,7 +286,7 @@
 .fnd-card-role {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.78);
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 13px;
@@ -310,7 +310,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 12px;
   text-decoration: none;
   transition: all 0.22s ease;
@@ -328,7 +328,7 @@
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
   transition: color 0.22s ease;
 }
@@ -539,7 +539,7 @@
 }
 .fnd-cta-text p {
   font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.78);
   max-width: 440px;
 }
 .fnd-cta-btn {

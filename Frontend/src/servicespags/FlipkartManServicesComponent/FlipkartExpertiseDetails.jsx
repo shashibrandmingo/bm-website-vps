@@ -206,7 +206,7 @@ const FlipkartExpertiseDetails = () => {
             border: 1px solid var(--border-color2-rgba);
             border-radius: 12px;
             padding: 25px 20px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.78);
             text-align: left;
             cursor: pointer;
             transition: all 0.3s ease;

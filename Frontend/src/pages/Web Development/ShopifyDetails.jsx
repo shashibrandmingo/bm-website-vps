@@ -7,6 +7,7 @@ import d2 from "../../assets/images/resource/service-d2.jpg";
 import RelatedServices from "../../components/RelatedServices/RelatedServices";
 import PortfolioSlider from "../../components/PortfolioSlider/PortfolioSlider";
 import ShopifyDetailsHero from "../../servicespags/shopifyComponents/ShopifyDetailsHero";
+import ShopifyHeroSlider from "../../servicespags/shopifyComponents/ShopifyHeroSlider";
 import ShopifyExpertiseDetails from "../../servicespags/shopifyComponents/ShopifyExpertiseDetails";
 import ShopifyProcessSection from "../../servicespags/shopifyComponents/ShopifyProcessSection";
 import ShopifyModernDigital from "../../servicespags/shopifyComponents/ShopifyModernDigital";
@@ -81,6 +82,9 @@ const ShopifyDetails = () => {
 
       {/* HERO */}
       <ShopifyDetailsHero />
+
+      {/* SHOPIFY FEATURED PROJECTS SLIDER (UNDER HERO) */}
+      <ShopifyHeroSlider />
 
       {/* MAIN */}
       <section
@@ -227,7 +231,7 @@ const ShopifyDetails = () => {
     .react-stat-label {
       font-family: var(--body-font-family);
       font-size: 12px;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.78);
       letter-spacing: 0.3px;
     }
 
@@ -370,7 +374,7 @@ const ShopifyDetails = () => {
 
     .code-blue   { color: #79b8ff; }
     .code-orange { color: var(--theme-color1, #ff6b1e); }
-    .code-white  { color: rgba(255,255,255,0.8); }
+    .code-white  { color: rgba(255,255,255,0.78); }
     .code-line   { margin: 0 !important; }
 
     /* ── Back Glow ── */
@@ -394,7 +398,9 @@ const ShopifyDetails = () => {
   `}</style>
                   </div>
 
-                  {/* S2 */}
+                  {/* S2 & S3 (Temporarily commented out) */}
+                  {false && (
+                    <>
                   <h3 style={{ marginTop: "60px" }} className="mb-2 ">
                     What is Shopify Development?
                   </h3>
@@ -577,6 +583,8 @@ const ShopifyDetails = () => {
                       </div>
                     </div>
                   </section>
+                    </>
+                  )}
 
                   {/* S4 */}
                   {/* --- WHAT YOU GET / DELIVERABLES SECTION --- */}

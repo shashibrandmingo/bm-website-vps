@@ -80,7 +80,7 @@
 .ci-banner-desc {
   font-family: var(--heading-font-family, inherit);
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
   margin: 0;
   line-height: 1.6;
 }
@@ -245,7 +245,7 @@
 .ci-card-text {
   font-family: var(--heading-font-family, inherit);
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.65;
   display: block;
   text-decoration: none;
@@ -257,7 +257,7 @@
 }
 
 .ci-card-closed {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* Divider between cards */

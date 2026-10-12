@@ -383,7 +383,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.78);
   padding: 0 20px 6px;
   margin: 0;
   font-family: var(--heading-font-family, inherit);
@@ -394,7 +394,7 @@
   align-items: center;
   gap: 11px;
   padding: 7px 20px;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
   font-size: 13.5px;
   font-weight: 500;
@@ -503,7 +503,7 @@
 
 .mega-panel-desc {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.6;
   margin: 0 0 8px;
   font-family: var(--body-font-family, inherit);
@@ -604,7 +604,7 @@
 .mega-sub-desc {
   display: block;
   font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.5;
   font-family: var(--body-font-family, inherit);
 }
@@ -836,7 +836,7 @@
   align-items: center;
   gap: 10px;
   padding: 12px 0 !important;
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
   font-size: 14px !important;
   font-weight: 500 !important;
   text-decoration: none;
@@ -891,7 +891,7 @@
 
 .mobile-menu .contact-info-box .title {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.78);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 600;

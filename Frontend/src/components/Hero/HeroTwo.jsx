@@ -176,7 +176,7 @@ const CircleBadge = ({ openPopup }) => (
         fontSize="11"
         fontWeight="700"
         letterSpacing="2.8"
-        fill="rgba(255,255,255,0.5)"
+        fill="rgba(255,255,255,0.78)"
         fontFamily="inherit"
       >
         <textPath href="#hn-cp">

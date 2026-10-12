@@ -1,0 +1,213 @@
+/* ══════════════════════════════════════════════════════
+   COMPACT FLOATING GLASS CHIPS SLIDER (LINEAR / VERCEL STYLE)
+   - Borderless, Compact & Seamless
+   - Pure Interactive Glass Chips with Edge Fade Masks
+══════════════════════════════════════════════════════ */
+
+.seo-chips-section {
+  position: relative;
+  background-color: var(--body-bg, #0d0d0d);
+  padding: 20px 0;
+  overflow: hidden;
+  border: none; /* No top or bottom border line */
+  z-index: 10;
+}
+
+/* ── Viewport with Linear/Vercel Cinematic Edge Fade Mask ── */
+.seo-chips-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  padding: 6px 0;
+  /* Smooth edge gradient fade */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+
+.seo-chips-track {
+  display: flex;
+  width: max-content;
+}
+
+.seo-chips-group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  animation: seoChipsMarquee 38s linear infinite;
+  will-change: transform;
+}
+
+/* Pause marquee scroll on hover */
+.seo-chips-track:hover .seo-chips-group {
+  animation-play-state: paused;
+}
+
+/* ── Interactive Glass Chip Pill ── */
+.seo-glass-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: rgba(18, 18, 22, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(var(--theme-color-white-rgb, 255, 255, 255), 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35),
+              inset 0 1px 0 rgba(var(--theme-color-white-rgb, 255, 255, 255), 0.05);
+  text-decoration: none;
+  transition: all 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  white-space: nowrap;
+}
+
+.seo-glass-chip:hover {
+  background: rgba(26, 26, 32, 0.96);
+  border-color: rgba(var(--theme-color1-rgb, 255, 107, 30), 0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55),
+              0 0 18px rgba(var(--theme-color1-rgb, 255, 107, 30), 0.22);
+}
+
+/* Micro Icon Bubble */
+.seo-chip-icon-disc {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(var(--theme-color1-rgb, 255, 107, 30), 0.12);
+  border: 1px solid rgba(var(--theme-color1-rgb, 255, 107, 30), 0.28);
+  color: var(--theme-color1, #ff6b1e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.seo-glass-chip:hover .seo-chip-icon-disc {
+  background: var(--theme-color1, #ff6b1e);
+  color: #ffffff;
+  border-color: #ffffff;
+  transform: rotate(5deg) scale(1.05);
+  box-shadow: 0 0 10px rgba(var(--theme-color1-rgb, 255, 107, 30), 0.6);
+}
+
+/* Typography Inside Chip */
+.seo-chip-text {
+  font-family: var(--heading-font-family, inherit);
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.seo-chip-white {
+  color: var(--theme-color-white, #ffffff);
+  transition: color 0.25s ease;
+}
+
+.seo-chip-accent {
+  color: var(--theme-color1, #ff6b1e);
+  font-weight: 600;
+  transition: text-shadow 0.25s ease;
+}
+
+.seo-glass-chip:hover .seo-chip-accent {
+  text-shadow: 0 0 10px rgba(var(--theme-color1-rgb, 255, 107, 30), 0.5);
+}
+
+/* Top-Right Arrow `↗` */
+.seo-chip-arrow {
+  color: rgba(var(--theme-color-white-rgb, 255, 255, 255), 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  margin-left: 2px;
+}
+
+.seo-glass-chip:hover .seo-chip-arrow {
+  color: var(--theme-color1, #ff6b1e);
+  transform: translate(2px, -2px);
+}
+
+/* Star Separator Between Chips */
+.seo-chip-star {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  margin: 0 16px;
+  opacity: 0.8;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* ── Seamless Marquee Keyframes ── */
+@keyframes seoChipsMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .seo-chips-group {
+    animation-play-state: paused;
+  }
+}
+
+/* ── Responsive Breakpoints ── */
+@media (max-width: 991.98px) {
+  .seo-chips-section {
+    padding: 18px 0;
+  }
+
+  .seo-glass-chip {
+    padding: 7px 15px;
+    gap: 9px;
+  }
+
+  .seo-chip-icon-disc {
+    width: 26px;
+    height: 26px;
+  }
+
+  .seo-chip-text {
+    font-size: 0.84rem;
+  }
+
+  .seo-chip-star {
+    margin: 0 12px;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .seo-chips-section {
+    padding: 16px 0;
+  }
+
+  .seo-chips-viewport {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+  }
+
+  .seo-glass-chip {
+    padding: 7px 13px;
+    gap: 8px;
+  }
+
+  .seo-chip-text {
+    font-size: 0.8rem;
+  }
+
+  .seo-chip-star {
+    margin: 0 10px;
+    width: 14px;
+    height: 14px;
+  }
+}

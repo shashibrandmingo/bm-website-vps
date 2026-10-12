@@ -303,7 +303,7 @@
 
 .au-intro-tagline {
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.7;
   margin: 0;
 }
@@ -320,7 +320,7 @@
 
 .au-body-text {
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
 
   line-height: 1.85;
   max-width: 520px;

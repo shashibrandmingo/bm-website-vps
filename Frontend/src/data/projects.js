@@ -64,6 +64,130 @@ const projects = [
       },
     ],
   },
+  {
+    type: "Shopify",
+
+    img: "/Cloudinary-images/tiffytots/tiffytots.jpg",
+    title: "Tiffytots Shopify Store",
+    category: "Kids & Lifestyle",
+
+    description:
+      "Designed and developed a Shopify e-commerce store for Tiffytots, a kids' lifestyle brand offering backpacks, sling bags, water bottles, feeding products, and everyday essentials. The store focuses on a colourful, user-friendly shopping experience, responsive layouts, intuitive product discovery, and conversion-focused design to help parents shop effortlessly.",
+
+    preview: "https://tiffytots.in/",
+    caseStudy: "/portfolio",
+
+    images: [
+      "/Cloudinary-images/tiffytots/tiffytots1.jpg",
+      "/Cloudinary-images/tiffytots/tiffytots2.jpg",
+      "/Cloudinary-images/tiffytots/tiffytots3.jpg",
+      "/Cloudinary-images/tiffytots/tiffytots4.jpg",
+      "/Cloudinary-images/tiffytots/tiffytots5.jpg",
+      "/Cloudinary-images/tiffytots/tiffytots6.jpg",
+      "/Cloudinary-images/tiffytots/tiffytots7.jpg",
+    ],
+
+    impact: {
+      value: "CRO",
+      label: "Focused Shopify Store Design",
+    },
+
+    meta: {
+      client: "Tiffytots",
+      services: "UI/UX Design, Shopify Development",
+      industry: "Kids & Lifestyle E-Commerce",
+      team: "Not specified",
+      duration: "Not specified",
+      tools: ["Shopify", "HTML5", "CSS3", "JavaScript"],
+    },
+
+    results: [
+      {
+        faIcon: "fa-mobile-screen-button",
+        value: "Responsive",
+        label: "Mobile-First",
+        bold: "Store Design",
+      },
+      {
+        faIcon: "fa-cart-shopping",
+        value: "Shopify",
+        label: "E-Commerce",
+        bold: "Store Development",
+      },
+      {
+        faIcon: "fa-layer-group",
+        value: "Organised",
+        label: "Product Categories",
+        bold: "Easy Product Discovery",
+      },
+      {
+        faIcon: "fa-palette",
+        value: "Colourful",
+        label: "Kids-Focused",
+        bold: "Brand Experience",
+      },
+    ],
+  },
+  {
+    type: "Website Development",
+
+    img: "/Cloudinary-images/rajcrestco/rajcrestco1.jpg",
+    title: "Rajcrest Website",
+    category: "Sports & Lifestyle",
+
+    description:
+      "Designed and developed the Rajcrest website with a clean, user-friendly layout and responsive design. The project focuses on presenting the brand and its offerings through organised sections, intuitive navigation, and a consistent digital experience across devices.",
+
+    preview: "https://rajcrestco.in/",
+    caseStudy: "/portfolio",
+
+    images: [
+      "/Cloudinary-images/rajcrestco/rajcrestco2.jpg",
+      "/Cloudinary-images/rajcrestco/rajcrestco3.jpg",
+      "/Cloudinary-images/rajcrestco/rajcrestco4.jpg",
+    ],
+
+    impact: {
+      value: "Responsive",
+      label: "Website Design & Development",
+    },
+
+    meta: {
+      client: "Rajcrest",
+      services: "UI/UX Design, Website Development",
+      industry: "Sports & Lifestyle",
+      team: "Not specified",
+      duration: "Not specified",
+      tools: ["HTML5", "CSS3", "JavaScript"],
+    },
+
+    results: [
+      {
+        faIcon: "fa-mobile-screen-button",
+        value: "Responsive",
+        label: "Multi-Device",
+        bold: "Website Experience",
+      },
+      {
+        faIcon: "fa-layer-group",
+        value: "Structured",
+        label: "Clear Layout",
+        bold: "Content Presentation",
+      },
+      {
+        faIcon: "fa-compass",
+        value: "Intuitive",
+        label: "Simple Navigation",
+        bold: "User Experience",
+      },
+      {
+        faIcon: "fa-palette",
+        value: "Consistent",
+        label: "Brand-Focused",
+        bold: "Visual Design",
+      },
+    ],
+  },
 
   // ==========================
   // FULL STACK PROJECTS

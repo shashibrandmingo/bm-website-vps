@@ -181,7 +181,7 @@
 .ah-desc {
   font-family: var(--body-font-family, inherit);
   font-size: clamp(14px, 1.3vw, 15.5px);
-  color: var(--text-color, #ccc);
+  color: rgba(255, 255, 255, 0.78);
   opacity: 0;
   line-height: 1.78;
   max-width: 480px;
@@ -193,7 +193,7 @@
 }
 
 .ah-section--visible .ah-desc {
-  opacity: 0.55;
+  opacity: 1;
   transform: translateY(0);
 }
 
@@ -431,7 +431,7 @@
   font-family: var(--heading-font-family, inherit);
   font-size: 9px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.3;
   text-align: center;
   display: block;

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import "./PopUpPortfolio.css";
 
@@ -76,7 +77,7 @@ const PortfolioPopup = ({ project, onClose }) => {
     else thumbsRef.current.scrollTop += 200;
   };
 
-  return (
+  return createPortal(
     <div
       className="ppop-overlay"
       onClick={onClose}
@@ -297,7 +298,8 @@ const PortfolioPopup = ({ project, onClose }) => {
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

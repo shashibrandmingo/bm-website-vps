@@ -150,7 +150,7 @@
 .ssh-para {
   font-family: var(--body-font-family, "Poppins", sans-serif);
   font-size: clamp(14px, 1.1vw, 16px);
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.8;
   max-width: 580px;
   margin: 0 auto;
@@ -277,7 +277,7 @@
 .ssh-card-desc {
   font-family: var(--body-font-family, "Poppins", sans-serif);
   font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.72;
   margin: 0;
   flex: 1;
@@ -294,7 +294,7 @@
   height: 36px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 13px;
   margin-top: 22px;
   position: relative;

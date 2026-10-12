@@ -203,7 +203,11 @@ const Careers = ({ isOpen, onClose }) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    if (!ALLOWED_TYPES.includes(file.type)) {
+    const ext = (file.name.split(".").pop() || "").toLowerCase();
+    const isAllowedExt = ["pdf", "doc", "docx"].includes(ext);
+    const isAllowedType = ALLOWED_TYPES.includes(file.type);
+
+    if (!isAllowedExt && !isAllowedType) {
       setResumeError("Only PDF, DOC, or DOCX allowed.");
       setResumeFile(null);
       return;
@@ -243,15 +247,15 @@ const Careers = ({ isOpen, onClose }) => {
         },
         body: JSON.stringify({
           formType: "Careers",
-          fullName: values.fullName,
-          email: values.email,
-          phone: values.phone,
-          position: values.position,
-          experience: values.experience,
-          location: values.location,
-          portfolioUrl: values.portfolioUrl,
-          coverMessage: values.coverMessage,
-          resumeName: resumeFile ? resumeFile.name : "",
+          fullName: (values.fullName || "").trim(),
+          email: (values.email || "").trim(),
+          phone: (values.phone || "").trim(),
+          position: values.position || "",
+          experience: values.experience || "",
+          location: (values.location || "").trim(),
+          portfolioUrl: (values.portfolioUrl || "").trim(),
+          coverMessage: (values.coverMessage || "").trim(),
+          resumeName: resumeFile ? resumeFile.name : "N/A",
         }),
       });
 

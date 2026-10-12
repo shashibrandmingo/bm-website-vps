@@ -7,7 +7,7 @@
   --cl-orange: #ff6b1e;
   --cl-orange-light: #ff9340;
   --cl-white: #ffffff;
-  --cl-gray: #888888;
+  --cl-gray: rgba(255, 255, 255, 0.78);
   --cl-gray-light: #bbbbbb;
 
   /* card sizes */

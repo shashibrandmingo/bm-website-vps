@@ -191,7 +191,7 @@ const NewFooter = () => {
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 2.5px;
-          color: rgba(255,255,255,0.75);
+          color: rgba(255,255,255,0.78);
           margin-bottom: 6px;
         }
 
@@ -468,7 +468,7 @@ const NewFooter = () => {
 
         .f-policy-links a {
           font-size: 12px;
-          color: rgba(255,255,255,0.6);
+          color: rgba(255,255,255,0.78);
           text-decoration: none;
           transition: color 0.2s;
         }

@@ -91,7 +91,7 @@
 /* Description */
 .pf-subtext {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.78);
   font-family: var(--body-font-family);
   line-height: 1.65;
   margin: 0 0 24px;
@@ -121,7 +121,7 @@
   cursor: pointer;
   border: 1.5px solid rgba(255, 255, 255, 0.14);
   background: transparent;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
   white-space: nowrap;
   line-height: 1;
   transition:
@@ -152,7 +152,7 @@
 .pf-empty {
   text-align: center;
   padding: 60px 0;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.78);
   font-family: var(--body-font-family);
   font-size: 15px;
   width: 100%;

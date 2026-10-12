@@ -122,7 +122,7 @@
 .am-desc {
   font-family: var(--body-font-family, inherit);
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.75;
   margin: 0 0 32px;
   max-width: 360px;
@@ -268,7 +268,7 @@
 .am-card-desc {
   font-family: var(--body-font-family, inherit);
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.65;
   margin: 0;
 }

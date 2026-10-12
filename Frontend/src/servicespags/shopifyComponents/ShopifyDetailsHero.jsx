@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { openEnquiryPopup } from "../../utils/popup";
 import { Link } from "react-router-dom";
+import ShopifyHeroForm from "./ShopifyHeroForm";
 
 const GradientText = ({ text, fontFamily }) => (
   <>
@@ -47,6 +48,7 @@ const GradientText = ({ text, fontFamily }) => (
 
 const ShopifyDetailsHero = () => {
   const [ff, setFf] = React.useState("var(--heading-font-family)");
+  const [showForm, setShowForm] = useState(true);
 
   useEffect(() => {
     const root = getComputedStyle(document.documentElement);
@@ -74,37 +76,43 @@ const ShopifyDetailsHero = () => {
             </ul>
           </div>
 
-          {/* BLOCK 2 — atom image */}
-          <div className="rdh-right">
-            <div className="rdh-ring-1" />
-            <div className="rdh-ring-2" />
-            <div className="rdh-img-glow" />
-            {/* <div className="rdh-atom-wrap">
-              <ReactAtomSVG />
-            </div> */}
+          {/* BLOCK 2 — atom image or form */}
+          {showForm ? (
+            <div className="rdh-right has-form" key="hero-form-box">
+              <ShopifyHeroForm onClose={() => setShowForm(false)} />
+            </div>
+          ) : (
+            <div className="rdh-right" key="hero-graphic-box">
+              <div className="rdh-ring-1" />
+              <div className="rdh-ring-2" />
+              <div className="rdh-img-glow" />
+              {/* <div className="rdh-atom-wrap">
+                <ReactAtomSVG />
+              </div> */}
 
-            <div className="rdh-atom-wrap rdh-no-spin">
-              <DotLottieReact
-                src="https://lottie.host/541c4010-602e-4a20-81e1-2eed81d671ab/vprLzTuF7A.lottie"
-                loop
-                autoplay
-              />
-            </div>
-            <div className="rdh-chip rdh-chip-1">
-              <i className="fas fa-shopping-cart" /> Shopify Expert Ready
-            </div>
+              <div className="rdh-atom-wrap rdh-no-spin">
+                <DotLottieReact
+                  src="https://lottie.host/541c4010-602e-4a20-81e1-2eed81d671ab/vprLzTuF7A.lottie"
+                  loop
+                  autoplay
+                />
+              </div>
+              <div className="rdh-chip rdh-chip-1">
+                <i className="fas fa-shopping-cart" /> Shopify Expert Ready
+              </div>
 
-            <div className="rdh-chip rdh-chip-2">
-              <i className="fas fa-store" /> High-Converting Stores
-            </div>
+              <div className="rdh-chip rdh-chip-2">
+                <i className="fas fa-store" /> High-Converting Stores
+              </div>
 
-            <div className="rdh-chip rdh-chip-3">
-              <i className="fas fa-chart-line" /> Sales-Driven Growth
+              <div className="rdh-chip rdh-chip-3">
+                <i className="fas fa-chart-line" /> Sales-Driven Growth
+              </div>
+              <span className="rdh-vert-label">
+                React · PWA · SPA · TypeScript
+              </span>
             </div>
-            <span className="rdh-vert-label">
-              React · PWA · SPA · TypeScript
-            </span>
-          </div>
+          )}
 
           {/* BLOCK 3 — desc + buttons + badges */}
           <div className="rdh-bottom-block">

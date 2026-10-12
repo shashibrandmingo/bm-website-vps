@@ -2,91 +2,91 @@ import React, { useState } from "react";
 
 const servicesData = [
   {
-    id: "enterprise",
+    id: "store-development",
     title: "Custom Shopify Store Development",
-    desc: "We build high-converting Shopify stores tailored to your brand, ensuring performance, scalability, and seamless shopping experiences.",
+    desc: "We build high-converting Shopify stores tailored to your brand, products, and business goals.",
     points: [
-      "Design custom storefronts aligned with your business goals",
-      "Build mobile-friendly and conversion-focused layouts",
-      "Deliver fast performance and smooth user experience",
-      "Create scalable stores for long-term business growth",
+      "Custom storefront design aligned with your brand identity",
+      "Mobile-friendly and conversion-focused layouts",
+      "Seamless shopping experience and intuitive navigation",
+      "Scalable Shopify solutions for business growth",
     ],
   },
   {
-    id: "legacy",
+    id: "store-redesign",
     title: "Shopify Store Redesign",
-    desc: "We redesign outdated Shopify stores with modern layouts that improve user experience and increase conversions.",
+    desc: "Transform your existing Shopify store with a modern design, improved usability, and a better shopping experience.",
     points: [
-      "Refresh your store with a modern UI/UX",
-      "Improve customer navigation and engagement",
-      "Optimize layouts for higher conversions",
-      "Enhance branding across every page",
+      "Modernise your storefront with a premium look",
+      "Improve product discovery and navigation",
+      "Optimise layouts for mobile and desktop",
+      "Enhance user experience across the customer journey",
     ],
   },
   {
-    id: "pwa",
+    id: "theme-customization",
     title: "Shopify Theme Customization",
-    desc: "We customize Shopify themes to match your brand while improving speed, usability, and shopping experiences.",
+    desc: "Customise your Shopify theme to match your business requirements and create a consistent brand experience.",
     points: [
-      "Customize themes to reflect your brand identity",
-      "Build responsive layouts for every device",
-      "Improve navigation and shopping flow",
-      "Optimize themes for speed and performance",
+      "Customise theme layouts, sections, and templates",
+      "Personalise colours, typography, and styling",
+      "Design unique product and collection pages",
+      "Improve responsive design across devices",
     ],
   },
   {
-    id: "api",
+    id: "app-integrations",
     title: "App & API Integrations",
-    desc: "We integrate Shopify with essential business tools to automate operations and improve store functionality.",
+    desc: "Connect your Shopify store with essential business tools to streamline operations and expand functionality.",
     points: [
-      "Connect payment gateways securely",
-      "Integrate shipping and CRM solutions",
-      "Enable third-party app integrations",
-      "Automate store workflows efficiently",
+      "Integrate payment gateways and shipping solutions",
+      "Connect inventory, CRM, and marketing tools",
+      "Configure relevant Shopify apps and extensions",
+      "Automate workflows through supported integrations",
     ],
   },
   {
-    id: "ecommerce",
+    id: "migration-services",
     title: "Shopify Migration Services",
-    desc: "We migrate your existing store to Shopify securely without losing products, customers, or valuable SEO data.",
+    desc: "Move your online store to Shopify with a structured migration process designed to minimise business disruption.",
     points: [
-      "Perform smooth platform migration",
-      "Transfer products and customer data",
-      "Preserve SEO structure and URLs",
-      "Ensure minimal downtime during migration",
+      "Migrate products, collections, and customer data",
+      "Transfer relevant store information and content",
+      "Preserve URL structures and configure redirects",
+      "Test store functionality before launch",
     ],
   },
   {
-    id: "spa",
+    id: "performance-optimization",
     title: "Shopify Performance Optimization",
-    desc: "We optimize Shopify stores for faster loading, smoother performance, and better shopping experiences.",
+    desc: "Improve your Shopify store's loading experience, usability, and technical performance.",
     points: [
-      "Improve website speed and loading time",
-      "Optimize images and store resources",
-      "Enhance mobile performance and usability",
-      "Deliver a faster customer experience",
+      "Identify page speed bottlenecks",
+      "Optimise images and frontend assets",
+      "Review scripts and apps affecting performance",
+      "Improve mobile usability and Core Web Vitals",
     ],
   },
   {
-    id: "migration",
+    id: "seo-optimization",
     title: "Shopify SEO Optimization",
-    desc: "We build SEO-ready Shopify stores that improve search visibility and attract more organic traffic.",
+    desc: "Improve your Shopify store's organic search visibility with ecommerce-focused SEO strategies.",
     points: [
-      "Create an SEO-friendly store structure",
-      "Optimize products and collection pages",
-      "Implement technical SEO best practices",
-      "Improve rankings and organic traffic",
+      "Optimise product and collection page metadata",
+      "Improve headings, descriptions, and internal linking",
+      "Address crawlability and indexing issues",
+      "Optimise image alt text and relevant structured data",
     ],
   },
   {
-    id: "payment",
+    id: "maintenance-support",
     title: "Shopify Maintenance & Support",
-    desc: "We provide ongoing Shopify maintenance and support to keep your store secure, updated, and running smoothly.",
+    desc: "Keep your Shopify store updated, functional, and ready to support your growing ecommerce business.",
     points: [
-      "Manage regular Shopify updates",
-      "Monitor security and store performance",
-      "Resolve bugs and technical issues",
-      "Provide continuous expert support",
+      "Resolve theme and storefront issues",
+      "Maintain apps and integrations",
+      "Test important shopping and checkout journeys",
+      "Implement ongoing technical improvements",
     ],
   },
 ];
@@ -104,7 +104,7 @@ const ShopifyExpertiseDetails = () => {
       <div className="react-expertise-section">
         <div className="auto-container">
           <h3 className="mb-5 text-center section-main-h3">
-            Our ReactJS Development Expertise
+            Our Shopify Development Expertise
           </h3>
 
           {/* ── DESKTOP: same as before ── */}
@@ -207,7 +207,7 @@ const ShopifyExpertiseDetails = () => {
             border: 1px solid var(--border-color2-rgba);
             border-radius: 12px;
             padding: 25px 20px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.78);
             text-align: left;
             cursor: pointer;
             transition: all 0.3s ease;

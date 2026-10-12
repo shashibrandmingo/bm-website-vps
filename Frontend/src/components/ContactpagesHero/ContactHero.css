@@ -204,7 +204,7 @@
 .ch-desc {
   font-family: var(--body-font-family, inherit);
   font-size: clamp(14px, 1.4vw, 16px);
-  color: var(--text-color, #ccc);
+  color: rgba(255, 255, 255, 0.78);
   opacity: 0;
   line-height: 1.72;
   max-width: 440px;
@@ -216,7 +216,7 @@
 }
 
 .ch-section--visible .ch-desc {
-  opacity: 0.55;
+  opacity: 1;
   transform: translateY(0);
 }
 

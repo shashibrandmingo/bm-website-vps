@@ -250,7 +250,7 @@ const ReactDetails = () => {
     .react-stat-label {
       font-family: var(--body-font-family);
       font-size: 12px;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.78);
       letter-spacing: 0.3px;
     }
 
@@ -393,7 +393,7 @@ const ReactDetails = () => {
 
     .code-blue   { color: #79b8ff; }
     .code-orange { color: var(--theme-color1, #ff6b1e); }
-    .code-white  { color: rgba(255,255,255,0.8); }
+    .code-white  { color: rgba(255,255,255,0.78); }
     .code-line   { margin: 0 !important; }
 
     /* ── Back Glow ── */

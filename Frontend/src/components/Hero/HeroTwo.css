@@ -259,7 +259,7 @@
   font-family: var(--heading-font-family, "Poppins", sans-serif);
   font-size: clamp(28px, 4vw, 58px);
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.2;
   letter-spacing: -0.5px;
   margin-bottom: 2px;
@@ -440,7 +440,7 @@
 .hn-sub {
   font-family: var(--body-font-family, "Poppins", sans-serif);
   font-size: clamp(13px, 1.1vw, 15.5px);
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.5;
   max-width: 600px;
   margin: 0 0 16px;
@@ -459,7 +459,7 @@
   font-family: var(--heading-font-family, "Poppins", sans-serif);
   font-size: 13px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
   letter-spacing: 0.3px;
   padding-bottom: 2px;
@@ -469,7 +469,7 @@
     border-color 0.25s ease;
 }
 .hn-ghost-btn:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.78);
   border-color: rgba(var(--theme-color1-rgb), 0.5);
 }
 
@@ -478,16 +478,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
   width: 100%;
 }
 .hn-logos-label {
   font-family: var(--body-font-family, "Poppins", sans-serif);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 2.5px;
+  letter-spacing: 2.8px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
   position: relative;
 }
@@ -495,46 +495,48 @@
 .hn-logos-label::after {
   content: "";
   display: inline-block;
-  width: 30px;
+  width: 36px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.18);
   vertical-align: middle;
-  margin: 0 12px;
+  margin: 0 14px;
 }
 .hn-logos-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 48px;
   flex-wrap: wrap;
   width: 100%;
-  max-width: 800px;
+  max-width: 1050px;
+  margin: 0 auto;
 }
 .hn-logo {
   display: flex;
   align-items: center;
   justify-content: center;
   filter: grayscale(1) brightness(0) invert(1);
-  opacity: 0.5;
+  opacity: 0.85;
   transition:
-    filter 0.4s ease,
-    opacity 0.4s ease,
-    transform 0.3s ease;
+    filter 0.35s ease,
+    opacity 0.35s ease,
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: default;
 }
 .hn-logo:hover {
   filter: grayscale(0) brightness(1) invert(0);
   opacity: 1;
-  transform: scale(1.08);
+  transform: translateY(-3px) scale(1.08);
 }
 .hn-logo img {
-  height: 54px;
+  height: 65px;
   width: auto;
-  max-width: 170px;
+  max-width: 190px;
   object-fit: contain;
   display: block;
   vertical-align: middle;
   user-select: none;
+  transition: transform 0.3s ease;
 }
 
 /* ══ CIRCLE BADGE ═════════════════════════ */
@@ -564,7 +566,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 1;
@@ -587,11 +589,12 @@
     padding: 130px 0 70px;
   }
   .hn-logo img {
-    height: 62px;
-    max-width: 190px;
+    height: 78px;
+    max-width: 220px;
   }
   .hn-logos-row {
-    gap: 52px;
+    gap: 60px;
+    max-width: 1200px;
   }
 }
 @media (max-width: 1440px) {
@@ -620,11 +623,12 @@
     padding: 100px 0 56px;
   }
   .hn-logos-row {
-    gap: 28px;
+    gap: 36px;
+    max-width: 880px;
   }
   .hn-logo img {
-    height: 48px;
-    max-width: 145px;
+    height: 58px;
+    max-width: 170px;
   }
 }
 @media (max-width: 991px) {
@@ -637,11 +641,12 @@
     margin-bottom: 10px;
   }
   .hn-logos-row {
-    gap: 24px;
+    gap: 32px;
+    max-width: 760px;
   }
   .hn-logo img {
-    height: 44px;
-    max-width: 135px;
+    height: 52px;
+    max-width: 155px;
   }
 }
 @media (max-width: 767px) {
@@ -671,14 +676,15 @@
     transform: none !important;
   }
   .hn-logos-label {
-    font-size: 9px;
+    font-size: 10px;
+    letter-spacing: 2.4px;
   }
   .hn-logo img {
-    height: 38px;
-    max-width: 125px;
+    height: 48px;
+    max-width: 145px;
   }
   .hn-logos-row {
-    gap: 20px;
+    gap: 24px 30px;
   }
   .hn-circle-badge {
     width: 110px;
@@ -753,11 +759,11 @@
 }
 @media (max-width: 480px) {
   .hn-logo img {
-    height: 30px;
-    max-width: 100px;
+    height: 40px;
+    max-width: 125px;
   }
   .hn-logos-row {
-    gap: 14px;
+    gap: 16px 20px;
   }
 }
 @media (max-width: 400px) {
@@ -769,11 +775,11 @@
     margin-bottom: 4px;
   }
   .hn-logos-row {
-    gap: 12px;
+    gap: 14px 16px;
   }
   .hn-logo img {
-    height: 26px;
-    max-width: 85px;
+    height: 35px;
+    max-width: 110px;
   }
 }
 

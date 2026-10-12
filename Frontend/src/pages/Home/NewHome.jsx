@@ -16,6 +16,7 @@ const BrandSection = lazy(() => import("../../components/BrandSection/BrandSecti
 const TestimonialHome = lazy(() => import("../../components/Testimonial/TestimonialHome"));
 const BlogHome = lazy(() => import("../../components/BlogHome/BlogHome"));
 const ClientForm = lazy(() => import("../../components/contactfrom/ClientForm"));
+const SeoServicesSlider = lazy(() => import("../../components/SeoServicesSlider/SeoServicesSlider"));
 
 const SectionFallback = () => <div style={{ minHeight: "100px" }} />;
 
@@ -71,6 +72,9 @@ const NewHome = ({ openPopup }) => {
         <div className="newsSection-home">
           <BlogHome />
         </div>
+
+        {/* ── SEO Services Slider (Placed right above the Contact Form) ── */}
+        <SeoServicesSlider openPopup={openPopup} />
 
         <div className="clientForm-home">
           <ClientForm />
