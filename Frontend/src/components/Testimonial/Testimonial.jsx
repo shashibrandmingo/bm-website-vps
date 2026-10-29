@@ -1,117 +1,3 @@
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { Navigation, Autoplay } from "swiper/modules";
-
-// import "swiper/css";
-// import "swiper/css/navigation";
-
-// import star from "../../assets/images/icons/star.png";
-// import circle from "../../assets/images/icons/text-circle1-1.png";
-// import quote from "../../assets/images/icons/quote-icon-1-1.png";
-// import client from "../../assets/images/resource/client1-1.jpg";
-
-// const Testimonial = () => {
-//   return (
-//     <section className="testimonial-wrapper testimonial-one section-padding">
-//       <div className="container">
-//         {/* TITLE */}
-//         <div className="sec-title">
-//           <div className="row align-items-end">
-//             <div className="col-lg-8">
-//               <span className="sub-title">
-//                 <img src={star} alt="" /> Testimonial
-//               </span>
-
-//               <h2 className="title">
-//                 The Best Customers <br />
-//                 Says <span>About Our Action</span>
-//               </h2>
-//             </div>
-
-//             <div className="col-lg-4">
-//               <div className="testi-counter">
-//                 <h3>4.8</h3>
-//                 <p>(5k+) Customer reviews</p>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-
-//         <div className="row">
-//           {/* LEFT CIRCLE */}
-//           <div className="col-lg-4">
-//             <div className="left-content">
-//               <div className="circle-box">
-//                 <img src={circle} className="ani-circle" />
-
-//                 <div className="icon">
-//                   <img src={quote} />
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* RIGHT SLIDER */}
-//           <div className="col-lg-8">
-//             <Swiper
-//               modules={[Navigation, Autoplay]}
-//               spaceBetween={30}
-//               slidesPerView={1}
-//               autoplay={{ delay: 3000 }}
-//               navigation={{
-//                 nextEl: ".array-next",
-//                 prevEl: ".array-prev",
-//               }}
-//             >
-//               {[1, 2, 3].map((item, i) => (
-//                 <SwiperSlide key={i}>
-//                   <div className="testimonial-block-one">
-//                     <div className="inner-box">
-//                       <div className="star">
-//                         {[...Array(5)].map((_, i) => (
-//                           <i key={i} className="fa-solid fa-star"></i>
-//                         ))}
-//                       </div>
-
-//                       <div className="text">
-//                         Their data-driven SEO approach delivered real results.
-//                         Our rankings improved and conversions increased.
-//                       </div>
-
-//                       <div className="infu">
-//                         <div className="image">
-//                           <img src={client} />
-//                         </div>
-
-//                         <div className="name-info">
-//                           <h5>Emily Carter</h5>
-//                           <span>Senior Project Manager</span>
-//                         </div>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </SwiperSlide>
-//               ))}
-//             </Swiper>
-
-//             {/* ARROWS */}
-//             <div className="array-button">
-//               <button className="array-prev">
-//                 <i className="fa-solid fa-chevron-left"></i>
-//               </button>
-
-//               <button className="array-next">
-//                 <i className="fa-solid fa-chevron-right"></i>
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Testimonial;
-
 import { useEffect } from "react";
 import Swiper from "swiper";
 import { Navigation, Autoplay } from "swiper/modules"; // 🔥 ADD THIS
@@ -176,15 +62,15 @@ const Testimonial = () => {
     <section className="testimonial-wrapper testimonial-one section-padding">
       {/* BG SHAPES */}
       <div className="testi-bg-shape">
-        <img src={bgShape} alt="" />
+        <img src={bgShape} alt="Testimonial Background Shape" aria-hidden="true" loading="lazy" decoding="async" />
       </div>
 
       <div className="testi-light-shape-1">
-        <img src={lightShape} alt="" />
+        <img src={lightShape} alt="Testimonial Light Shape" aria-hidden="true" loading="lazy" decoding="async" />
       </div>
 
       <div className="testi-shape-1 tm-gsap-animate-circle">
-        <img src={shape} alt="" />
+        <img src={shape} alt="Testimonial Decorative Accent" aria-hidden="true" loading="lazy" decoding="async" />
       </div>
 
       <div className="container">
@@ -193,7 +79,7 @@ const Testimonial = () => {
           <div className="row g-4 justify-content-between align-items-end">
             <div className="col-lg-8">
               <span className="sub-title">
-                <img src={star} alt="" />
+                <img src={star} alt="Client Testimonial Star" loading="lazy" decoding="async" />
                 Testimonial
               </span>
 
@@ -220,10 +106,10 @@ const Testimonial = () => {
           <div className="col-lg-5">
             <div className="left-content">
               <div className="circle-box">
-                <img className="ani-circle" src={circle} alt="" />
+                <img className="ani-circle" src={circle} alt="Client Feedback Circle Animation" aria-hidden="true" loading="lazy" decoding="async" />
 
                 <a href="#" className="icon">
-                  <img src={quote} alt="" />
+                  <img src={quote} alt="Customer Testimonial Quote Icon" loading="lazy" decoding="async" />
                 </a>
               </div>
             </div>
@@ -255,7 +141,7 @@ const Testimonial = () => {
 
                         <div className="infu">
                           <div className="image">
-                            <img src={client1} alt="" />
+                            <img src={client1} alt="Satisfied Client Review - Brandmingo Digital Marketing Noida" loading="lazy" decoding="async" />
                           </div>
                           <div className="name-info">
                             <h5 className="name">Emily Carter</h5>
@@ -286,7 +172,7 @@ const Testimonial = () => {
 
                         <div className="infu">
                           <div className="image">
-                            <img src={client1} alt="" />
+                            <img src={client1} alt="Satisfied Client Review - Brandmingo Digital Marketing Noida" loading="lazy" decoding="async" />
                           </div>
                           <div className="name-info">
                             <h5 className="name">David Smith</h5>
@@ -317,7 +203,7 @@ const Testimonial = () => {
 
                         <div className="infu">
                           <div className="image">
-                            <img src={client1} alt="" />
+                            <img src={client1} alt="Satisfied Client Review - Brandmingo Digital Marketing Noida" loading="lazy" decoding="async" />
                           </div>
                           <div className="name-info">
                             <h5 className="name">Sophia Lee</h5>
@@ -360,7 +246,7 @@ const Testimonial = () => {
               <div className="customar-right-content">
                 <div className="capterra-area">
                   <div className="icon">
-                    <img src={capterra} alt="" />
+                    <img src={capterra} alt="Brandmingo Capterra 4.8 Rating" loading="lazy" decoding="async" />
                   </div>
                   <div className="content">
                     <h5>Capterra</h5>
@@ -372,7 +258,7 @@ const Testimonial = () => {
 
                 <div className="google-area">
                   <div className="icon">
-                    <img src={google} alt="" />
+                    <img src={google} alt="Brandmingo Google 4.8 Rating Noida" loading="lazy" decoding="async" />
                   </div>
                   <div className="content">
                     <h5>Google</h5>

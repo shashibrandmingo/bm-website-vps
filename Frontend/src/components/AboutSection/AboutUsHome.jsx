@@ -249,11 +249,11 @@ export default function AboutUsHome() {
             <Link to="/about-us" className="btn-style-one">
               {" "}
               <span className="btn-arrow-left">
-                <img src={arrow} alt="" />
+                <img src={arrow} alt="Arrow icon" aria-hidden="true" loading="lazy" decoding="async" />
               </span>
               <span className="btn-title">Explore Our Approach.</span>
               <span className="btn-arrow-right">
-                <img src={arrow} alt="" />
+                <img src={arrow} alt="Arrow icon" aria-hidden="true" loading="lazy" decoding="async" />
               </span>
             </Link>{" "}
           </motion.div>

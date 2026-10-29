@@ -1,0 +1,1 @@
+import{d as e}from"./vendor-LVJMZm79.js";export{e as DotLottieReact};

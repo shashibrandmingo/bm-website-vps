@@ -283,11 +283,11 @@ const ServicesSectionHome = () => {
         >
           <Link to="/contact-us" className="btn-style-one">
             <span className="btn-arrow-left">
-              <img src={arrow} alt="" />
+              <img src={arrow} alt="Explore services arrow" aria-hidden="true" loading="lazy" decoding="async" />
             </span>
             <span className="btn-title">Let's Talk About Your Project</span>
             <span className="btn-arrow-right">
-              <img src={arrow} alt="" />
+              <img src={arrow} alt="Explore services arrow" aria-hidden="true" loading="lazy" decoding="async" />
             </span>
           </Link>
         </motion.div>

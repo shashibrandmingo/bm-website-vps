@@ -25,7 +25,7 @@ const NewFooter = () => {
     },
     {
       name: "Social Media Management",
-      path: "social-media-management",
+      path: "/social-media-management",
     },
     {
       name: "UI/UX And Audits",
@@ -44,6 +44,15 @@ const NewFooter = () => {
       path: "/graphic-designing",
     },
   ];
+  const locationLinks = [
+    { name: "Digital Marketing in Noida", path: "/digital-marketing-company-in-noida" },
+    { name: "Digital Marketing Delhi NCR", path: "/digital-marketing-agency-in-delhi-ncr" },
+    { name: "Digital Marketing Gurgaon", path: "/digital-marketing-company-in-gurgaon" },
+    { name: "Digital Marketing Greater Noida", path: "/digital-marketing-company-in-greater-noida" },
+    { name: "Digital Marketing Ghaziabad", path: "/digital-marketing-company-in-ghaziabad" },
+    { name: "Digital Marketing Faridabad", path: "/digital-marketing-company-in-faridabad" },
+  ];
+
   const footerRef = useRef(null);
 
   useEffect(() => {
@@ -530,7 +539,7 @@ const NewFooter = () => {
           <div className="f-top-flex reveal-item">
             <div className="f-logo">
               <Link to="/" aria-label="Go to homepage">
-                <img src={logo} alt="Brandmingo Logo" />
+                <img src={logo} alt="Brandmingo - Digital Marketing Company in Noida" loading="lazy" decoding="async" />
               </Link>
             </div>
             <div className="f-cta-block">
@@ -642,7 +651,7 @@ const NewFooter = () => {
                   <div className="f-partner-icon">
                     <img
                       src="/Cloudinary-images/partner1_stzwuz.svg"
-                      alt="Shopify Partners"
+                      alt="Shopify Partners - Brandmingo eCommerce Development" loading="lazy" decoding="async"
                     />
                   </div>
                 </div>
@@ -651,7 +660,7 @@ const NewFooter = () => {
                   <div className="f-partner-icon">
                     <img
                       src="/Cloudinary-images/partner2_lps5nu.svg"
-                      alt="Meta Business Partners"
+                      alt="Meta Business Partners - Brandmingo Digital Marketing Agency" loading="lazy" decoding="async"
                     />
                   </div>
                 </div>
@@ -660,12 +669,43 @@ const NewFooter = () => {
                   <div className="f-partner-icon">
                     <img
                       src="/Cloudinary-images/partner3_jgutpi.svg"
-                      alt="Google Partner"
+                      alt="Google Partner - Brandmingo PPC & SEO Agency Noida" loading="lazy" decoding="async"
                     />
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* ── CITY COVERAGE / LOCAL SEO HUBS ── */}
+          <div
+            className="f-locations reveal-item"
+            style={{
+              paddingTop: "24px",
+              paddingBottom: "24px",
+              marginTop: "24px",
+              borderTop: "1px solid rgba(255, 255, 255, 0.12)",
+              borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "10px 22px",
+              fontSize: "13.5px",
+            }}
+          >
+            <span style={{ color: "#ff8c42", fontWeight: "700", textTransform: "uppercase", letterSpacing: "1px", display: "inline-flex", alignItems: "center", gap: "6px" }}>
+              <i className="fa-solid fa-location-dot" /> Regional Hubs:
+            </span>
+            {locationLinks.map((loc) => (
+              <Link
+                key={loc.name}
+                to={loc.path}
+                style={{ color: "rgba(255, 255, 255, 0.85)", textDecoration: "none", fontWeight: 500 }}
+              >
+                {loc.name}
+              </Link>
+            ))}
           </div>
 
           {/* ── BOTTOM BAR ── */}

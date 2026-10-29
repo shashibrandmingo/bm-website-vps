@@ -535,10 +535,7 @@ const SnapdealManServices = () => {
                               borderRadius: "6px",
                             }}
                           >
-                            <img
-                              src={s.img}
-                              alt=""
-                              style={{
+                            <img src={s.img} alt={s.cap || "Snapdeal Man Services Services - Brandmingo Noida"} loading="lazy" decoding="async" style={{
                                 width: "100%",
                                 height: "100%",
                                 objectFit: "cover",

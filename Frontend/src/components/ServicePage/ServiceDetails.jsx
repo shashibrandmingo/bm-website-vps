@@ -39,7 +39,7 @@ const ServiceDetails = () => {
     });
 
     // ✅ GSAP Parallax — Exactly like data-speed=".8" in your HTML theme
-    // HTML theme mein: <img data-speed=".8"> → image 0.8x speed par scroll hoti hai
+    // Parallax scroll helper
     // Yahan: ScrollTrigger scrub se same effect milta hai
     const ctx = gsap.context(() => {
       if (imageRef.current && imageWrapperRef.current) {
@@ -186,10 +186,7 @@ const ServiceDetails = () => {
                     height: "400px", // ✅ Fixed height
                   }}
                 >
-                  <img
-                    ref={imageRef}
-                    src={serviceImg}
-                    alt=""
+                  <img ref={imageRef} src={serviceImg} alt="Digital Marketing and Web Development Services in Noida - Brandmingo" loading="lazy" decoding="async"
                     style={{
                       width: "100%",
                       height: "115%", // ✅ Slightly taller — parallax ke liye room
@@ -251,9 +248,7 @@ const ServiceDetails = () => {
                               margin: 0,
                             }}
                           >
-                            <img
-                              src={img}
-                              alt=""
+                            <img src={img} alt="Digital Marketing Service Project - Brandmingo Noida" loading="lazy" decoding="async"
                               style={{
                                 width: "100%",
                                 height: "100%",

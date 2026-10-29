@@ -29,7 +29,7 @@ const ProjectSection = () => {
       <section className="project-section section-padding">
         {/* Decorative shape */}
         <div className="light-shape">
-          <img src={shape} alt="" />
+          <img src={shape} alt="Digital Marketing Noida Background Pattern" aria-hidden="true" loading="lazy" decoding="async" />
         </div>
 
         <div className="container">
@@ -37,7 +37,7 @@ const ProjectSection = () => {
             <div className="row g-4 justify-content-between align-items-end">
               <div className="col-xl-7 col-lg-8">
                 <span className="sub-title">
-                  <img src={star} alt="" />
+                  <img src={star} alt="Case Study Star" loading="lazy" decoding="async" />
                   Case Study
                 </span>
                 {/* <h2 className="title">
@@ -58,11 +58,11 @@ const ProjectSection = () => {
                 <div className="project-btn text-center text-lg-end">
                   <Link to="/portfolio" className="btn-style-one">
                     <span className="btn-arrow-left">
-                      <img src={arrow} alt="" />
+                      <img src={arrow} alt="View projects arrow" aria-hidden="true" loading="lazy" decoding="async" />
                     </span>
                     <span className="btn-title">View All Project</span>
                     <span className="btn-arrow-right">
-                      <img src={arrow} alt="" />
+                      <img src={arrow} alt="View projects arrow" aria-hidden="true" loading="lazy" decoding="async" />
                     </span>
                   </Link>
                 </div>
@@ -88,8 +88,8 @@ const ProjectSection = () => {
               >
                 <div className="inner-block">
                   <div className="image-block">
-                    <img className="hover-img" src={item.img} alt="" />
-                    <img className="hover-img" src={item.img} alt="" />
+                    <img className="hover-img" src={item.img} alt={`${item.title} - Digital Marketing and Web Development Case Study in Noida`} loading="lazy" decoding="async" />
+                    <img className="hover-img" src={item.img} alt={`${item.title} - Digital Marketing and Web Development Case Study in Noida`} loading="lazy" decoding="async" />
                     <a
                       href="#"
                       className="arrow-icon"
@@ -99,7 +99,7 @@ const ProjectSection = () => {
                         openPopup(item);
                       }}
                     >
-                      <img src={arrowIcon} alt="" />
+                      <img src={arrowIcon} alt="View project details" loading="lazy" decoding="async" />
                     </a>
                   </div>
                   <div className="content-block">

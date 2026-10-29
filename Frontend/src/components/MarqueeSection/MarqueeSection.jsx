@@ -31,7 +31,7 @@ const MarqueeSection = () => {
             <div className="marquee-group" key={i}>
               {ROW1.map((text, index) => (
                 <div className="text" key={index}>
-                  <img src={star1} alt="" />
+                  <img src={star1} alt="Digital Marketing Services Noida" aria-hidden="true" loading="lazy" decoding="async" />
                   {text}
                 </div>
               ))}
@@ -47,7 +47,7 @@ const MarqueeSection = () => {
             <div className="marquee-group" key={i}>
               {ROW2.map((text, index) => (
                 <div className="text" key={index}>
-                  <img src={star2} alt="" />
+                  <img src={star2} alt="Web Development Agency Noida" aria-hidden="true" loading="lazy" decoding="async" />
                   {text}
                 </div>
               ))}

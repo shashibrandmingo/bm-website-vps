@@ -58,6 +58,11 @@ import NewHome from "./pages/Home/NewHome";
 const BlogDetails = lazy(() => import("./pages/Blogs/BlogDetails/BlogDetails"));
 
 const About = lazy(() => import("./pages/About/About"));
+const CityDigitalMarketing = lazy(
+  () => import("./pages/CityPages/CityDigitalMarketing"),
+);
+const CareersPage = lazy(() => import("./pages/Careers/CareersPage"));
+const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 const PortfolioPage = lazy(
   () => import("./pages/PortfolioPage/PortfolioPage.jsx"),
@@ -304,7 +309,7 @@ function AppContent({ isPopupOpen, openPopup, closePopup, isCareersOpen, openCar
           {/* WEBSITE */}
           <Route path="/" element={<NewHome openPopup={openPopup} />} />
 
-          <Route path="/about" element={<About openPopup={openPopup} />} />
+          <Route path="/about" element={<Navigate to="/about-us" replace />} />
           <Route path="/about-us" element={<About openPopup={openPopup} />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
 
@@ -399,6 +404,38 @@ function AppContent({ isPopupOpen, openPopup, closePopup, isCareersOpen, openCar
             path="/brand-identity-design"
             element={<BrandIdentityDesign />}
           />
+
+          {/* CITY-WISE DIGITAL MARKETING LANDING PAGES (FOR LOCAL SEO DOMINANCE) */}
+          <Route
+            path="/digital-marketing-company-in-noida"
+            element={<CityDigitalMarketing forcedCity="noida" />}
+          />
+          <Route
+            path="/digital-marketing-agency-in-delhi-ncr"
+            element={<CityDigitalMarketing forcedCity="delhi-ncr" />}
+          />
+          <Route
+            path="/digital-marketing-company-in-gurgaon"
+            element={<CityDigitalMarketing forcedCity="gurgaon" />}
+          />
+          <Route
+            path="/digital-marketing-company-in-greater-noida"
+            element={<CityDigitalMarketing forcedCity="greater-noida" />}
+          />
+          <Route
+            path="/digital-marketing-company-in-ghaziabad"
+            element={<CityDigitalMarketing forcedCity="ghaziabad" />}
+          />
+          <Route
+            path="/digital-marketing-company-in-faridabad"
+            element={<CityDigitalMarketing forcedCity="faridabad" />}
+          />
+
+          {/* CAREERS */}
+          <Route path="/careers" element={<CareersPage />} />
+
+          {/* 404 NOT FOUND */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         {/* FOOTER */}

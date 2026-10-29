@@ -3,8 +3,19 @@ import { Link } from "react-router-dom";
 import starIcon from "../../assets/images/icons/star1-1.svg";
 import "./SeoServicesSlider.css";
 
-/* ── 7 Core SEO Services with Linear/Vercel Glass Chip Layout ── */
+/* ── Core SEO Services with Linear/Vercel Glass Chip Layout ── */
 const SEO_SERVICES_CHIPS = [
+  {
+    whiteText: "Digital Marketing Company",
+    accentText: "in Noida",
+    fullTitle: "Digital Marketing Company in Noida",
+    link: "/digital-marketing-company-in-noida",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      </svg>
+    ),
+  },
   {
     whiteText: "Website Development Company",
     accentText: "in Noida",
@@ -154,12 +165,7 @@ const SeoServicesSlider = () => {
                   </Link>
 
                   {/* Brandmingo Orange Star Separator */}
-                  <img
-                    src={starIcon}
-                    alt=""
-                    className="seo-chip-star"
-                    aria-hidden="true"
-                  />
+                  <img src={starIcon} alt="SEO Services Star Icon" className="seo-chip-star" aria-hidden="true" loading="lazy" decoding="async" />
                 </React.Fragment>
               ))}
             </div>

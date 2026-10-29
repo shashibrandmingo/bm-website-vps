@@ -13,11 +13,11 @@ const AboutAwardSection = () => {
     <section className="award-section-2 section-padding">
       {/* Background Elements */}
       <div className="award-light">
-        <img src={awardLight} alt="" />
+        <img src={awardLight} alt="Digital Marketing Award Light Effect" aria-hidden="true" loading="lazy" decoding="async" />
       </div>
 
       <div className="award-vec tm-gsap-animate-circle">
-        <img src={awardVec} alt="" />
+        <img src={awardVec} alt="Brandmingo Innovation Award Icon" aria-hidden="true" loading="lazy" decoding="async" />
       </div>
 
       <div className="container">
@@ -26,7 +26,7 @@ const AboutAwardSection = () => {
           <div className="row g-4 justify-content-between align-items-end">
             <div className="col-xl-6 col-lg-8">
               <span className="sub-title tz-sub-tilte tz-sub-anim tx-subTitle">
-                <img src={starIcon} alt="img" /> Awards
+                <img src={starIcon} alt="Digital Agency Awards Star" loading="lazy" decoding="async" /> Awards
               </span>
 
               <h2 className="title tx-title sec_title tz-itm-title tz-itm-anim">
@@ -54,7 +54,7 @@ const AboutAwardSection = () => {
           {/* Left Image */}
           <div className="col-xl-3 col-lg-4 wow fadeInUp" data-wow-delay=".3s">
             <div className="award-image1">
-              <img src={awardsImg} alt="" />
+              <img src={awardsImg} alt="Digital Marketing Company in Noida Awards and Recognition - Brandmingo" loading="lazy" decoding="async" />
             </div>
           </div>
 
@@ -103,7 +103,7 @@ const AboutAwardSection = () => {
                       <div className="text">{item.tag}</div>
 
                       <Link to="/about-us" className="arrow-icon">
-                        <img src={arrowIcon} alt="" />
+                        <img src={arrowIcon} alt="Explore Award Details" loading="lazy" decoding="async" />
                       </Link>
                     </div>
                   </div>

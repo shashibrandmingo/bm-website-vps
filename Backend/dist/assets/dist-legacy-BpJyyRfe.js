@@ -1,0 +1,1 @@
+System.register(["./vendor-legacy-D3sW38Ak.js"],function(e,t){var n;return{setters:[function(e){n=e.d}],execute:function(){e("DotLottieReact",n)}}});

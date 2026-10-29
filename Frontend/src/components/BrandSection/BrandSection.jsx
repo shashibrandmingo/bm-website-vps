@@ -47,10 +47,10 @@ const BrandSection = () => {
             <div className="swiper-slide" key={index}>
               <div className="brand-box-1">
                 <span className="brand-img-1">
-                  <img src={img} alt="" />
+                  <img src={img} alt="Trusted Brand Partner - Digital Marketing Noida" loading="lazy" decoding="async" />
                 </span>
                 <span className="brand-img-1">
-                  <img src={img} alt="" />
+                  <img src={img} alt="Trusted Brand Partner - Digital Marketing Noida" loading="lazy" decoding="async" />
                 </span>
               </div>
             </div>

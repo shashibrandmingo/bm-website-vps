@@ -1,0 +1,1 @@
+System.register(["./rolldown-runtime-legacy-B9frCREz.js","./admin-editor-legacy-BylVXKsU.js"],function(e,n){var t,r;return{setters:[function(e){e.a},function(e){t=e.d,r=e.p}],execute:function(){r(),t()}}});

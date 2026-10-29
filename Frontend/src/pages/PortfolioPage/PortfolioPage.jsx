@@ -42,7 +42,7 @@ const PortfolioPage = () => {
           <div className="container">
             <div className="pf-hero-inner">
               <span className="sub-title pf-subtag">
-                <img src={star} alt="" />
+                <img src={star} alt="Portfolio Star Icon" loading="lazy" decoding="async" />
                 Our Work
               </span>
 
@@ -94,17 +94,9 @@ const PortfolioPage = () => {
                   >
                     <div className="inner-block">
                       <div className="image-block">
-                        <img
-                          className="hover-img"
-                          src={item.img}
-                          alt={item.title}
-                        />
+                        <img className="hover-img" src={item.img} alt={`${item.title} - Digital Marketing and Web Development in Noida`} loading="lazy" decoding="async" />
 
-                        <img
-                          className="hover-img"
-                          src={item.img}
-                          alt={item.title}
-                        />
+                        <img className="hover-img" src={item.img} alt={`${item.title} - Digital Marketing and Web Development in Noida`} loading="lazy" decoding="async" />
 
                         <a
                           href="#"
@@ -114,7 +106,7 @@ const PortfolioPage = () => {
                             openPopup(item);
                           }}
                         >
-                          <img src={arrowIcon} alt="" />
+                          <img src={arrowIcon} alt="Open project modal" loading="lazy" decoding="async" />
                         </a>
                       </div>
 

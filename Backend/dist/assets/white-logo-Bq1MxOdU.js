@@ -1,0 +1,1 @@
+var e=`/assets/white-logo-Bc89Tz4W.png`;export{e as t};

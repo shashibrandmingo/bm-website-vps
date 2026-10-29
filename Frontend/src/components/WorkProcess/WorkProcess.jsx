@@ -42,7 +42,7 @@ const WorkProcess = () => {
             <div className="work-process-content-1">
               <div className="sec-title mb-0">
                 <span className="sub-title">
-                  <img src={star} alt="" />
+                  <img src={star} alt="Working Process Star Icon" loading="lazy" decoding="async" />
                   Working Process
                 </span>
 
@@ -55,7 +55,7 @@ const WorkProcess = () => {
               </div>
 
               <div className="work-process-thumb" data-aos="fade-up">
-                <img src={shape} alt="" className="rotate-circle" />
+                <img src={shape} alt="Brandmingo Process Step Graphic" className="rotate-circle" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>

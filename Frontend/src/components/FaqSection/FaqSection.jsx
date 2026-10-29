@@ -58,11 +58,11 @@ const FaqSection = () => {
     <section className="faq-section section-padding position-relative">
       {/* Shapes */}
       <div className="faq-light-shape">
-        <img src={light} alt="" />
+        <img src={light} alt="FAQ Background Glow" aria-hidden="true" loading="lazy" decoding="async" />
       </div>
 
       <div className="faq-shape">
-        <img src={shape} alt="" />
+        <img src={shape} alt="Digital Marketing FAQ Decoration" aria-hidden="true" loading="lazy" decoding="async" />
       </div>
 
       <div className="container">
@@ -70,7 +70,7 @@ const FaqSection = () => {
           <div className="col-lg-9">
             <div className="sec-title text-center mb-60">
               <span className="sub-title">
-                <img src={star} alt="" />
+                <img src={star} alt="Frequently Asked Questions Star" loading="lazy" decoding="async" />
                 Faqs
               </span>
 

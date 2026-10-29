@@ -232,9 +232,62 @@ const SEO_DATA = {
     description: "Read the official terms and conditions for utilizing Brandmingo's website, products, and agency services.",
     keywords: "brandmingo terms of use, terms and conditions",
   },
+  "/digital-marketing-company-in-noida": {
+    title: "Best Digital Marketing Company in Noida Sector 62 | Brandmingo",
+    description: "Top digital marketing company in Noida Sector 62. Rank #1 on Google with high-authority SEO, 5.4x ROAS Meta/Google Ads, web development & branding. Call +91-9990613140.",
+    keywords: "digital marketing company in noida, digital marketing agency in noida, digital marketing company in noida sector 62, best digital marketing agency in noida, digital marketing agency in noida sector 62, seo company in noida, website development company in noida, performance marketing agency noida",
+  },
+  "/digital-marketing-agency-in-delhi-ncr": {
+    title: "Best Digital Marketing Agency in Delhi NCR | Top SEO & Ads Company",
+    description: "Scale your revenue across Delhi NCR with Brandmingo. Proven #1 Google rankings, high-converting Google/Meta Ads, website development & branding solutions.",
+    keywords: "digital marketing agency in delhi ncr, digital marketing company in delhi, best digital marketing firm delhi, seo company delhi ncr, web development agency delhi, performance marketing delhi",
+  },
+  "/digital-marketing-company-in-gurgaon": {
+    title: "Top Digital Marketing Company in Gurgaon (Gurugram) | Brandmingo",
+    description: "Premier digital marketing and SEO company in Gurgaon. Scale with high-ROAS Google Ads, LinkedIn B2B funnels, React web development, and #1 Google rankings.",
+    keywords: "digital marketing company in gurgaon, digital marketing agency in gurugram, seo agency gurgaon, b2b marketing company gurgaon, website development gurgaon",
+  },
+  "/digital-marketing-company-in-greater-noida": {
+    title: "Best Digital Marketing Company in Greater Noida | Brandmingo",
+    description: "Leading digital marketing company in Greater Noida. Local SEO, Google Map ranking, website design, and social media advertising for institutions & businesses.",
+    keywords: "digital marketing company in greater noida, seo services greater noida, website design greater noida, pari chowk marketing agency, digital marketing agency greater noida",
+  },
+  "/digital-marketing-company-in-ghaziabad": {
+    title: "Top Digital Marketing Agency in Ghaziabad & Indirapuram | Brandmingo",
+    description: "Accelerate your local business with Brandmingo Ghaziabad. Top Google ranking SEO, high-impact Meta ads, responsive websites, and local lead generation.",
+    keywords: "digital marketing company in ghaziabad, digital marketing agency in indirapuram, seo agency ghaziabad, website designing ghaziabad, local seo ghaziabad",
+  },
+  "/digital-marketing-company-in-faridabad": {
+    title: "Best Digital Marketing Company in Faridabad | Brandmingo",
+    description: "Scale your industrial & commercial business with Brandmingo Faridabad. High-performance SEO, Google Ads, website design, and B2B digital lead generation.",
+    keywords: "digital marketing company in faridabad, seo services in faridabad, website development faridabad, b2b industrial marketing faridabad, digital marketing agency faridabad",
+  },
+  "/careers": {
+    title: "Careers at Brandmingo | Join Top Web & Digital Agency in Noida Sector 62",
+    description: "Explore exciting career opportunities at Brandmingo Noida. We are hiring React developers, SEO specialists, Google/Meta Ads media buyers, and UI/UX designers.",
+    keywords: "brandmingo careers, web developer jobs noida, seo jobs noida sector 62, digital marketing jobs noida",
+  },
 };
 
 const PAGE_FAQS = {
+  "/digital-marketing-company-in-noida": [
+    {
+      q: "Why is Brandmingo the best digital marketing company in Noida Sector 62?",
+      a: "Brandmingo combines technical depth with performance marketing. Located at ITHUM Tower, Sector 62, Noida, our in-house team of certified Google & Meta specialists, full-stack React developers, and SEO strategists deliver end-to-end growth with transparent weekly ROI tracking and proven #1 Google rankings.",
+    },
+    {
+      q: "How long does it take to rank on Google's first page for Noida keywords?",
+      a: "For high-intent local queries in Noida and Delhi NCR, our clients typically see initial 1st-page rankings within 45 to 90 days using our Local Map 3-Pack optimization, high-authority backlink building, and technical SEO schema injection.",
+    },
+    {
+      q: "Can we visit your office in Noida Sector 62 for an in-person meeting?",
+      a: "Yes! You are welcome to meet our team at B-806, 8th Floor, ITHUM Tower, Block A, Industrial Area, Sector 62, Noida, UP 201309. Call or WhatsApp +91-9990613140 to schedule a consultation.",
+    },
+    {
+      q: "What digital marketing services do you provide in Noida?",
+      a: "We provide Search Engine Optimization (SEO), Google Search & Shopping Ads (PPC), Meta Ads (Facebook & Instagram), Social Media Marketing (SMM), High-Speed Website Development (React, WordPress, Shopify), eCommerce Account Management, and Corporate Branding.",
+    },
+  ],
   "/web-development": [
     {
       q: "Why is Brandmingo the best website development agency in Noida?",

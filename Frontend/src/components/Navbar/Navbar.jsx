@@ -248,6 +248,12 @@ const MEGA_SERVICES = [
     desc: "Proven SEO strategies that improve your search rankings, drive organic traffic, and grow your business sustainably.",
     items: [
       {
+        label: "Digital Marketing in Noida",
+        to: "/digital-marketing-company-in-noida",
+        icon: "fa-solid fa-trophy",
+        desc: "Rank #1 on Google with Noida's premier performance marketing agency.",
+      },
+      {
         label: "Organic Traffic",
         to: "/organic-traffic",
         icon: "fa-solid fa-seedling",
@@ -387,10 +393,7 @@ export default function Navbar({ openPopup }) {
               {/* Logo */}
               <div className="logo">
                 <Link to="/" onClick={closeMobileMenu}>
-                  <img
-                    src="/Cloudinary-images/Group-19-2-1024x199_pnnsp8.png"
-                    alt="Logo"
-                  />
+                  <img src="/Cloudinary-images/Group-19-2-1024x199_pnnsp8.png" alt="Brandmingo - Digital Marketing Company in Noida Sector 62" />
                 </Link>
               </div>
 
@@ -609,10 +612,7 @@ export default function Navbar({ openPopup }) {
             <div className="upper-box">
               <div className="nav-logo">
                 <Link to="/" onClick={closeMobileMenu}>
-                  <img
-                    src="/Cloudinary-images/Group-19-2-1024x199_pnnsp8.png"
-                    alt="Logo"
-                  />
+                  <img src="/Cloudinary-images/Group-19-2-1024x199_pnnsp8.png" alt="Brandmingo - Digital Marketing Company in Noida Sector 62" />
                 </Link>
               </div>
               <div className="close-btn" onClick={closeMobileMenu}>
